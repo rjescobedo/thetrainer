@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Navbar, NavbarBrand } from 'reactstrap';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 
 class Main extends Component {
     constructor(props) {
@@ -9,11 +10,10 @@ class Main extends Component {
 
     render() {
         return (
-            <Navbar dark color="primary">
-                <div className="container">
-                    <NavbarBrand href="/">The Trainer</NavbarBrand>
-                </div>
-            </Navbar>
+            <div>
+                <Header />
+                <Footer />
+            </div>
         );
     };
 }
