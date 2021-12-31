@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Jumbotron } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.toggleNav = this.toggleNav.bind(this);
+        this.state = {
+            isNavOpen: false
+        };
+    }
+
+    toggleNav() {
+        this.setState({
+            isNavOpen: !this.state.isNavOpen
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -15,9 +32,27 @@ class Header extends Component {
                     </div>
                 </Jumbotron>
 
-                <Navbar className="navbar bg-light" sticky="top">
+                <Navbar light className="navbar navbar-dark" sticky="top" expand="md">
                 <div className="container">
-                    <NavbarBrand className="custom-font" href="/">The Trainer</NavbarBrand>
+                    <NavbarBrand className="mr-auto" href="/"><i className="fas fa-dumbbell" /> The Trainer</NavbarBrand>
+                    <NavbarToggler onClick={this.toggleNav}/>
+                    <Collapse isOpen={this.state.isNavOpen} navbar>
+                        <Nav navbar>
+                            <NavItem>
+                                <NavLink className="nav-link" to="/home">
+                                    <i className="fa fa-home fa-lg"/> Home
+                                </NavLink>
+                            </NavItem>
+                                <NavLink className="nav-link" to="/workouts">
+                                    <i className="fas fa-dumbbell fa-lg"/> Workouts
+                                </NavLink>
+                            <NavItem>
+                                <NavLink className="nav-link" to="/contactus">
+                                    <i className="fas fa-mobile-alt fa-lg"/> Contact Us
+                                </NavLink>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
                 </div>
                 </Navbar>
             </React.Fragment>

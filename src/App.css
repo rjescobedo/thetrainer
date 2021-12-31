@@ -8,6 +8,10 @@ body {
   margin: 0;
 }
 
+.navbar {
+  background: linear-gradient(200deg, #4f07d4 23%, #3b0898 54%)
+}
+
 .trainer-text {
   font-size: 1.5rem; }
 
