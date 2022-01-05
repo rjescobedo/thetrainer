@@ -4,18 +4,23 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
 import Contact from './ContactComponent';
+import { HOMECARDS } from '../shared/homecards';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            homecards: HOMECARDS,
+        };
     }
     render() {
 
         const HomePage = () => {
             return (
-                <Home />
+                <Home 
+                    homecards={this.state.homecards.map(card => card)}
+                />
             );
         };
 

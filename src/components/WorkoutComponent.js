@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
+import {UPPERBODYWORKOUT } from '../shared/upperbody'
 
-class Workouts extends Component {
+function Workouts() {
 
-    constructor(props) {
-        super(props);
+    const [upperbody, setUpperbody] = useState(UPPERBODYWORKOUT)
 
-        this.state = {};
-    }
-
-    render() {
+    console.log(upperbody);
         return ( 
             <div className="container">
                 <h1>Workouts</h1>
             </div>
         )
-    }
+    
 }
 
 export default Workouts;
