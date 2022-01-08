@@ -33,8 +33,8 @@ class Header extends Component {
                 </Jumbotron>
 
                 <Navbar light className="navbar navbar-dark" sticky="top" expand="md">
-                <div className="container">
-                    <NavbarBrand className="mr-auto" href="/"><i className="fas fa-dumbbell" /> The Trainer</NavbarBrand>
+                <div className="container-fluid">
+                    <NavbarBrand href="/"><i className="fas fa-dumbbell" /> The Trainer</NavbarBrand>
                     <NavbarToggler onClick={this.toggleNav}/>
                     <Collapse isOpen={this.state.isNavOpen} navbar>
                         <Nav navbar>

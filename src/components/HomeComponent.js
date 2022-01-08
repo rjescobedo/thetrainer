@@ -24,8 +24,7 @@ function Home(props) {
                 <Card className="bg-light">
                     <CardBody>
                         <CardTitle className="text-center card-title"><strong>Custom Workouts</strong></CardTitle>
-                        <CardText className="p-2">Ready to workout? Click here to view some custom workouts!</CardText>
-                        <button to="/" className="btn btn-primary">Workouts</button>
+                        <CardText className="p-2 text-center">Ready to workout? Click here to view some custom workouts!</CardText>
                     </CardBody>
                 </Card>
                 </div>
@@ -33,8 +32,7 @@ function Home(props) {
                 <Card className="bg-light">
                     <CardBody>
                         <CardTitle className="text-center card-title"><strong>Message Trainer</strong></CardTitle>
-                        <CardText className="p-2">Need to reach out to your personal trainer? Click ehre to chat with them!</CardText>
-                        <button to="/" className="btn btn-primary">Messenger</button>
+                        <CardText className="p-2 text-center">Need to reach out to your personal trainer? Click here to chat with them!</CardText>
                     </CardBody>
                 </Card>
                 </div>
