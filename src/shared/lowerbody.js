@@ -1,56 +1,56 @@
-export const UPPERBODYWORKOUT = [
+export const LOWERBODYWORKOUT = [
     {
         id: 0,
-        exercise: "Chest Press",
+        exercise: "Squat",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
         id: 1,
-        exercise: "Chest Flys",
+        exercise: "Jump Squat",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
         id: 2,
-        exercise: "Tricep Press",
+        exercise: "Lying Leg Curl",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
         id: 3,
-        exercise: "Over the Head",
+        exercise: "Romanian Deadlift",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
         id: 4,
-        exercise: "Lat Pull Down",
+        exercise: "Leg Press Calf Raise",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
         id: 5,
-        exercise: "Cable Row",
+        exercise: "Lunge",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
         id: 6,
-        exercise: "Single Arm Curls",
+        exercise: "Leg Press",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
         id: 7,
-        exercise: "Bicep Curls",
+        exercise: "One-Leg Calf Raise",
         sets: "3",
         reps: "10",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."

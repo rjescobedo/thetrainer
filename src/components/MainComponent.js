@@ -5,6 +5,8 @@ import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
 import Contact from './ContactComponent';
 import { HOMECARDS } from '../shared/homecards';
+import { UPPERBODYWORKOUT } from '../shared/upperbody';
+import { LOWERBODYWORKOUT } from '../shared/lowerbody';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
@@ -12,6 +14,9 @@ class Main extends Component {
         super(props);
         this.state = {
             homecards: HOMECARDS,
+            upperbody: UPPERBODYWORKOUT, 
+            lowerbody: LOWERBODYWORKOUT
+
         };
     }
     render() {
@@ -19,7 +24,7 @@ class Main extends Component {
         const HomePage = () => {
             return (
                 <Home 
-                    homecards={this.state.homecards.map(card => card)}
+                    //homecards={this.state.homecards.map(card => card)}
                 />
             );
         };
@@ -30,7 +35,11 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
-                    <Route exact path='/workouts' component={Workouts} />
+                    <Route exact path='/workouts' render={() => 
+                        <Workouts 
+                            upperworkouts={this.state.upperbody} 
+                            lowerworkouts={this.state.lowerbody}
+                        />} />
                     <Route exact path='/contactus' component={Contact} />
                     <Redirect to='/home' />
                 </Switch>
