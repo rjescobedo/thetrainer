@@ -4,7 +4,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
 import Contact from './ContactComponent';
-import { HOMECARDS } from '../shared/homecards';
+import { HOMECAROUSEL } from '../shared/homecarousel';
 import { UPPERBODYWORKOUT } from '../shared/upperbody';
 import { LOWERBODYWORKOUT } from '../shared/lowerbody';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -13,7 +13,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            homecards: HOMECARDS,
+            //homecarousel: HOMECAROUSEL,
             upperbody: UPPERBODYWORKOUT, 
             lowerbody: LOWERBODYWORKOUT
 
@@ -23,9 +23,7 @@ class Main extends Component {
 
         const HomePage = () => {
             return (
-                <Home 
-                    //homecards={this.state.homecards.map(card => card)}
-                />
+                <Home />
             );
         };
 

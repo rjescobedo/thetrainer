@@ -48,3 +48,7 @@ body {
   padding: 20px 0;
 }
 
+.card-title {
+  color: #4f07d4;
+  font-size: 1.5rem;
+}
