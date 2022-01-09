@@ -3,7 +3,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
-import Contact from './ContactComponent';
+import About from './AboutComponent';
 import { HOMECAROUSEL } from '../shared/homecarousel';
 import { UPPERBODYWORKOUT } from '../shared/upperbody';
 import { LOWERBODYWORKOUT } from '../shared/lowerbody';
@@ -38,7 +38,7 @@ class Main extends Component {
                             upperworkouts={this.state.upperbody} 
                             lowerworkouts={this.state.lowerbody}
                         />} />
-                    <Route exact path='/contactus' component={Contact} />
+                    <Route exact path='/about' component={About} />
                     <Redirect to='/home' />
                 </Switch>
                 <Footer />

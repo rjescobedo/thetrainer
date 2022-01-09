@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { 
-    Breadcrumb, 
-    BreadcrumbItem, 
     Button, 
     Label,  
     Col,
     Row
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors} from 'react-redux-form';
 
 const required = val => val && val.length;
@@ -17,7 +14,7 @@ const isNumber = val => !isNaN(+val);
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 
-class Contact extends Component {
+class About extends Component {
         constructor(props) {
             super(props);
 
@@ -45,21 +42,14 @@ class Contact extends Component {
             <div className="container pt-3">
                 <div className="row">
                     <div className="col">
-                        <h2>Contact Us</h2>
+                        <h2>About Us</h2>
                         <hr />
                     </div>
                 </div>
                 <div className="row row-content align-items-center">
-                    <div className="col-sm-4">
-                        <h5>Our Address</h5>
-                        <address>
-                            1221 New Meister Ln. <br />
-                            Pflugerville, TX 78660
-                        </address>
-                    </div>
                     <div className="col">
-                        <a role="button" className="btn btn-link" href="tel:+15127779345"><i className="fa fa-phone" /> 512-777-9345</a><br />
-                        <a role="button" className="btn btn-link" href="mailto:rjescobedo@gmail.com"><i className="fa fa-envelope-o" /> rjescobedo@gmail.com</a>
+                        <p className="aboutus-text"><strong className="custom-font">The Trainer</strong> is an innovative application to connect personal trainers and clients. Trainers will be able to create exercises and workouts for their clients with a detailed description, plus include videos and photos of every exercise. If the client has any questions about any of the workouts or upcoming appointments, this can be also communicated through <strong className="custom-font">The Trainer!</strong></p>
+                        <p className="aboutus-text">Have any questions or need to reach out to us? Please complete the form below.</p>
                     </div>
                 </div>
                 <div className="row row-content">
@@ -67,7 +57,7 @@ class Contact extends Component {
                         <h2>Reach out to us!</h2>
                         <hr />
                     </div>
-                    <div className="col-md-10">
+                    <div className="col-md-12">
                         <LocalForm onSubmit={values => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstName" md={2}>First Name</Label>
@@ -223,4 +213,4 @@ class Contact extends Component {
 
 }
 
-export default Contact;
+export default About;

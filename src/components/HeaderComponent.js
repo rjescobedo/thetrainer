@@ -82,8 +82,8 @@ class Header extends Component {
                                     <i className="fas fa-dumbbell fa-lg"/> Workouts
                                 </NavLink>
                             <NavItem>
-                                <NavLink className="nav-link" to="/contactus">
-                                    <i className="fas fa-mobile-alt fa-lg"/> Contact Us
+                                <NavLink className="nav-link" to="/about">
+                                    <i className="fas fa-mobile-alt fa-lg"/> About
                                 </NavLink>
                             </NavItem>
                         </Nav>
