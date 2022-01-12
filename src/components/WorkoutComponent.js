@@ -1,7 +1,56 @@
-import React from 'react';
-import { Media } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { 
+    Nav, 
+    Navbar, 
+    NavbarBrand, 
+    NavbarToggler, 
+    Collapse, 
+    NavItem, 
+    Jumbotron,
+    Button, 
+    Modal, 
+    ModalHeader, 
+    ModalBody, 
+    Form, 
+    FormGroup, 
+    Input, 
+    Label, 
+ } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
+export default function Workouts(props) {
+
+    const upperbodyWorkout = props.upperworkouts.map(workout => {
+        return (
+            <div className="col" key={workout.id}>
+                <RenderUpperWorkout workout={workout} />
+            </div>
+        );
+    });
+
+    const lowerbodyWorkout = props.lowerworkouts.map(workout => {
+        return (
+            <div className="col" key={workout.id}>
+                <RenderLowerWorkout workout={workout} />
+            </div>
+        );
+    });
+        return ( 
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-lg-6 p-3">
+                        <h2 className="text-center custom-font pb-2">Upper Body Workout</h2>
+                        {upperbodyWorkout}
+                    </div>
+                    <div className="col-12 col-lg-6 p-3">
+                        <h2 className="text-center custom-font pb-2">Lower Body Workout</h2>
+                        {lowerbodyWorkout}
+                    </div>
+                </div>
+            </div>
+        )
+    
+}
 
 function RenderUpperWorkout({workout}) {
     return (
@@ -30,40 +79,3 @@ function RenderLowerWorkout({workout}) {
         </React.Fragment>
     );
 }
-
-function Workouts(props) {
-
-    const upperbodyWorkout = props.upperworkouts.map(workout => {
-        return (
-            // Task 3
-            <div className="col" key={workout.id}>
-                <RenderUpperWorkout workout={workout} />
-            </div>
-        );
-    });
-    const lowerbodyWorkout = props.lowerworkouts.map(workout => {
-        return (
-            // Task 3
-            <div className="col" key={workout.id}>
-                <RenderLowerWorkout workout={workout} />
-            </div>
-        );
-    });
-        return ( 
-            <div className="container">
-                <div className="row">
-                    <div className="col-12 col-lg-6 p-3">
-                        <h2 className="text-center custom-font pb-2">Upper Body Workout</h2>
-                        {upperbodyWorkout}
-                    </div>
-                    <div className="col-12 col-lg-6 p-3">
-                        <h2 className="text-center custom-font pb-2">Lower Body Workout</h2>
-                        {lowerbodyWorkout}
-                    </div>
-                </div>
-            </div>
-        )
-    
-}
-
-export default Workouts;

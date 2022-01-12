@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Footer(props) {
+export default function Footer(props) {
     return (
         <footer className="site-footer bg-light">
             <div className="container">
@@ -33,5 +33,3 @@ function Footer(props) {
         
     );
 }
-
-export default Footer;

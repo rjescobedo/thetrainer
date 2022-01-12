@@ -5,7 +5,6 @@ import Example from './CarouselComponent'
 
 function Home(props) {
 
-
     return (
         <div className="container">
             <div className="row row-content">

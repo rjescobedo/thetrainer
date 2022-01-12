@@ -1,33 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
 import About from './AboutComponent';
-import { HOMECAROUSEL } from '../shared/homecarousel';
 import { UPPERBODYWORKOUT } from '../shared/upperbody';
 import { LOWERBODYWORKOUT } from '../shared/lowerbody';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            //homecarousel: HOMECAROUSEL,
-            upperbody: UPPERBODYWORKOUT, 
-            lowerbody: LOWERBODYWORKOUT
+export default function Main (props) {
 
-        };
-    }
-    render() {
+    const [upperbody, setUpperBody] = React.useState(UPPERBODYWORKOUT);
+    const [lowerbody, setLowerBody] = React.useState(LOWERBODYWORKOUT);
 
-        const HomePage = () => {
-            return (
-                <Home />
-            );
-        };
-
-
+    const HomePage = () => {
+        return (
+            <Home />
+        );
+    };
         return (
             <div>
                 <Header />
@@ -35,8 +25,8 @@ class Main extends Component {
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/workouts' render={() => 
                         <Workouts 
-                            upperworkouts={this.state.upperbody} 
-                            lowerworkouts={this.state.lowerbody}
+                            upperworkouts={upperbody} 
+                            lowerworkouts={lowerbody}
                         />} />
                     <Route exact path='/about' component={About} />
                     <Redirect to='/home' />
@@ -44,8 +34,6 @@ class Main extends Component {
                 <Footer />
             </div>
         );
-    };
 }
 
-export default Main;
 

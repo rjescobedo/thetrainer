@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { 
     Button, 
     Label,  
@@ -14,29 +14,37 @@ const isNumber = val => !isNaN(+val);
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 
-class About extends Component {
-        constructor(props) {
-            super(props);
+export default function About(props) {
 
-            this.state = {
-                firstName:'',
-                lastName:'',
-                phone:'',
-                email:'',
-                comments:'',
-                agree: false
+    const [formData, setFormData] = React.useState({
+        firstName:'',
+        lastName:'',
+        phone:'',
+        email:'',
+        comments:'',
+        agree: false
+
+    });
+
+    function handleChange(event) {
+        const {name, value, type, checked} = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
             }
-            
-            this.handleSubmit = this.handleSubmit.bind(this);
-        };
-   
-
-    handleSubmit(values) {
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
+        })
     }
 
-    render() {
+    function handleSubmit(event) {
+        alert(`
+            First Name: ${formData.firstName}
+            Last Name: ${formData.lastName} 
+            Phone: ${formData.phone} 
+            Email: ${formData.email} 
+            Comments: ${formData.comments} 
+            Agree: ${formData.agree} `)
+    }
         
         return (
             <div className="container pt-3">
@@ -58,7 +66,7 @@ class About extends Component {
                         <hr />
                     </div>
                     <div className="col-md-12">
-                        <LocalForm onSubmit={values => this.handleSubmit(values)}>
+                        <LocalForm onSubmit={handleSubmit}>
                             <Row className="form-group">
                                 <Label htmlFor="firstName" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -67,6 +75,8 @@ class About extends Component {
                                         id="firstName" 
                                         name="firstName"
                                         placeholder="First Name"
+                                        onChange={handleChange}
+                                        value={formData.firstName}
                                         className="form-control"
                                         validators={{
                                             required, 
@@ -94,6 +104,8 @@ class About extends Component {
                                         model=".lastName" 
                                         id="lastName" 
                                         name="lastName"
+                                        onChange={handleChange}
+                                        value={formData.lastName}
                                         placeholder="Last Name"
                                         className="form-control"
                                         validators={{
@@ -122,6 +134,8 @@ class About extends Component {
                                         model=".phone" 
                                         id="phone" 
                                         name="phone"
+                                        onChange={handleChange}
+                                        value={formData.phone}
                                         placeholder="Phone Number"
                                         className="form-control"
                                         validators={{
@@ -152,6 +166,8 @@ class About extends Component {
                                         model=".email" 
                                         id="email" 
                                         name="email"
+                                        onChange={handleChange}
+                                        value={formData.email}
                                         placeholder="Email"
                                         className="form-control"
                                         validators={{
@@ -179,6 +195,8 @@ class About extends Component {
                                                 model=".agree" 
                                                 id="agree" 
                                                 name="agree"
+                                                checked={formData.agree}
+                                                onChange={handleChange}
                                                 className="form-check-input"
                                                 /> {' '}
                                                 <strong>May we contact you?</strong>
@@ -193,6 +211,8 @@ class About extends Component {
                                         model="comments"
                                         id="comments"
                                         name="comments"
+                                        onChange={handleChange}
+                                        value={formData.comments}
                                         rows="12"
                                         className="form-control"
                                     />
@@ -209,8 +229,4 @@ class About extends Component {
             </div>
         );
 
-    }
-
 }
-
-export default About;
