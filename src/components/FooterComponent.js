@@ -2,12 +2,12 @@ import React from 'react';
 
 export default function Footer(props) {
     return (
-        <footer className="site-footer bg-light">
+        <footer className={props.darkMode ? 'site-footer dark-mode-footer' : 'site-footer bg-light'}>
             <div className="container">
                 <div className="row text-center">
                     <div className="col">
                         <a className="btn btn-social-icon btn-custom" href="https://www.facebook.com" target="_blank">
-                            <i className="fa fa-facebook"></i>
+                            <i className='fa fa-facebook'></i>
                         </a>{' '}
                         <a className="btn btn-social-icon btn-custom" href="https://www.twitter.com" target="_blank">
                             <i className="fa fa-twitter"></i>
@@ -25,11 +25,10 @@ export default function Footer(props) {
                 </div>
                 <div className="row text-center pt-4">
                     <div className="col">
-                        <span class="text-muted">&copy; 2021 The Trainer, Inc.</span>
+                        <span class={props.darkMode ? 'dark-mode-footer' : 'text-muted'}>&copy; 2021 The Trainer, Inc.</span>
                     </div>
                 </div>
             </div>
-        </footer>
-        
+        </footer>  
     );
 }

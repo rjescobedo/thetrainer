@@ -12,26 +12,40 @@ export default function Main (props) {
 
     const [upperbody, setUpperBody] = React.useState(UPPERBODYWORKOUT);
     const [lowerbody, setLowerBody] = React.useState(LOWERBODYWORKOUT);
+    const [darkMode, setDarkMode] = React.useState(true);
+
+    function toggleDarkMode() {
+        setDarkMode(prevMode => ! prevMode)
+    }
 
     const HomePage = () => {
         return (
-            <Home />
+            <Home
+                darkMode={darkMode}
+            />
         );
     };
         return (
             <div>
-                <Header />
+                <Header
+                    darkMode={darkMode}
+                    toggleDarkMode={toggleDarkMode}
+                />
                 <Switch>
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/workouts' render={() => 
                         <Workouts 
                             upperworkouts={upperbody} 
                             lowerworkouts={lowerbody}
-                        />} />
-                    <Route exact path='/about' component={About} />
+                            darkMode={darkMode}
+                        />} 
+                    />
+                    <Route exact path='/about' render={() =>
+                        <About darkMode={darkMode}/>
+                    }/>
                     <Redirect to='/home' />
                 </Switch>
-                <Footer />
+                <Footer darkMode={darkMode}/>
             </div>
         );
 }

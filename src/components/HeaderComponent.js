@@ -17,6 +17,7 @@ import {
     Label, 
  } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import DarkModeToggle from 'react-dark-mode-toggle';
 
 export default function Header(props) {
 
@@ -93,6 +94,14 @@ export default function Header(props) {
                             <NavItem>
                                 <NavLink className="nav-link" to="/about">
                                 </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <DarkModeToggle
+                                    className="nav-link"
+                                    onChange={props.toggleDarkMode}
+                                    checked={props.darkMode}
+                                    size={70}
+                                />
                             </NavItem>
                         </Nav>
                         <span className="navbar-text ml-auto">

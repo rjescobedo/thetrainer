@@ -36,15 +36,17 @@ export default function Workouts(props) {
         );
     });
         return ( 
-            <div className="container">
-                <div className="row">
-                    <div className="col-12 col-lg-6 p-3">
-                        <h2 className="text-center custom-font pb-2">Upper Body Workout</h2>
-                        {upperbodyWorkout}
-                    </div>
-                    <div className="col-12 col-lg-6 p-3">
-                        <h2 className="text-center custom-font pb-2">Lower Body Workout</h2>
-                        {lowerbodyWorkout}
+            <div className={props.darkMode ? 'dark-background' : ''}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-lg-6 p-3">
+                            <h2 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Upper Body Workout</h2>
+                            {upperbodyWorkout}
+                        </div>
+                        <div className="col-12 col-lg-6 p-3">
+                            <h2 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Lower Body Workout</h2>
+                            {lowerbodyWorkout}
+                        </div>
                     </div>
                 </div>
             </div>
