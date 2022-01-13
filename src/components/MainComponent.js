@@ -12,7 +12,7 @@ export default function Main (props) {
 
     const [upperbody, setUpperBody] = React.useState(UPPERBODYWORKOUT);
     const [lowerbody, setLowerBody] = React.useState(LOWERBODYWORKOUT);
-    const [darkMode, setDarkMode] = React.useState(true);
+    const [darkMode, setDarkMode] = React.useState(false);
 
     function toggleDarkMode() {
         setDarkMode(prevMode => ! prevMode)

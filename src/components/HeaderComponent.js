@@ -173,7 +173,6 @@ export default function Header(props) {
                                 <Button className="my-2" type="submit" value="submit" color="primary">Login</Button>
                         </Form>
                     </ModalBody>
-
                 </Modal>
             </React.Fragment>
         );
