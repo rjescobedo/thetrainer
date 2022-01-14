@@ -10,10 +10,13 @@ import {
     Label,
     Row,
     Col,
-    CustomFileInput
+    CustomFileInput,
+    ListGroup,
+    ListGroupItem,
+    ListGroupItemHeading,
+    ListGroupItemText
  } from 'reactstrap';
  import { Control, LocalForm, Errors} from 'react-redux-form';
- import { NavLink } from 'react-router-dom';
 
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
@@ -21,6 +24,7 @@ const minLength = len => val => val && (val.length >= len);
 const isNumber = val => !isNaN(+val);
 
 export default function Workouts(props) {
+
     const [workoutFormData, setWorkoutFormData] = React.useState({
         exerciseName: '',
         sets: '',
@@ -62,11 +66,37 @@ export default function Workouts(props) {
             <div className="col" key={workout.id}>
                 <RenderLowerWorkout workout={workout} />
             </div>
-        );
+        );   
     });
+
+    const upperbodyExercises = props.upperworkouts.map(upperExercise => {
+        return (
+            <div key={upperExercise.id}>
+                <RenderUpperbodyExercise upperExercise={upperExercise} />
+            </div>  
+        );   
+    });
+
+    const lowerbodyExercises = props.lowerworkouts.map(lowerExercise => {
+        return (
+            <div key={lowerExercise.id}>
+                <RenderLowerbodyExercise lowerExercise={lowerExercise} />
+            </div>  
+        );   
+    });
+
+    // Scrolling Exercises
+    // const divStyle={
+    //     overflowY: 'scroll',
+    //     border:'2px solid #4f07d4',
+    //     width:'600px',
+    //     float: 'left',
+    //     height:'300px',
+    //     position:'relative'
+    //   };
         return ( 
             <div className={props.darkMode ? 'dark-background' : ''}>
-                <div className="container">
+                <div className="container pt-4">
                     <h1 className="text-center custom-font workout-heading">Custom Exercise Form</h1>
                     <div className="row">
                         <div className="col-md-12">
@@ -221,10 +251,21 @@ export default function Workouts(props) {
                         <div className="col-12 col-lg-6 p-3">
                             <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Upper Body Workout</h4>
                             {upperbodyWorkout}
+                            <Button className="m-3" type="submit" color="primary">Workout Complete</Button>
                         </div>
                         <div className="col-12 col-lg-6 p-3">
                             <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Lower Body Workout</h4>
                             {lowerbodyWorkout}
+                            <Button className="m-3" type="submit" color="primary">Workout Complete</Button>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div className="row">
+                        <div className="col p-3 overflow-hidden">
+                            <h1 className="text-center custom-font workout-heading">Exercises</h1>
+                                {upperbodyExercises}
+                                {lowerbodyExercises}
+                            
                         </div>
                     </div>
                 </div>
@@ -232,6 +273,74 @@ export default function Workouts(props) {
         )
     
 }
+
+function RenderUpperbodyExercise({upperExercise}) {
+    const [isModalOpen, setModalOpen] = React.useState(false);
+
+    function toggleExerciseModal() {
+        setModalOpen(prevMode => !prevMode);
+    }
+
+    return(
+        <React.Fragment>
+            <div className="list-group" onClick={toggleExerciseModal}>
+                <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
+                  {upperExercise.exercise}
+                  <i class="fas fa-chevron-right m-1"></i>
+                </a>
+            </div>
+
+            <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
+                <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
+                    <h3>{upperExercise.exercise}</h3>
+                </ModalHeader>
+                <ModalBody>
+                    <Row>
+                        <Col>
+                            <h5 className="custom-font">Description</h5>
+                            {upperExercise.description}
+                        </Col>
+                    </Row>
+                </ModalBody>
+            </Modal>
+        </React.Fragment>
+    );
+}
+
+function RenderLowerbodyExercise({lowerExercise}) {
+    const [isModalOpen, setModalOpen] = React.useState(false);
+
+    function toggleExerciseModal() {
+        setModalOpen(prevMode => !prevMode);
+    }
+
+    return(
+        <React.Fragment>
+            <div className="list-group" onClick={toggleExerciseModal}>
+                <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
+                  {lowerExercise.exercise}
+                  <i class="fas fa-chevron-right m-1"></i>
+                </a>
+            </div>
+
+            <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
+                <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
+                    <h3>{lowerExercise.exercise}</h3>
+                </ModalHeader>
+                <ModalBody>
+                    <Row>
+                        <Col>
+                            <h5 className="custom-font">Description</h5>
+                            {lowerExercise.description}
+                        </Col>
+                    </Row>
+                </ModalBody>
+            </Modal>
+        </React.Fragment>
+    );
+}
+
+
 
 function RenderUpperWorkout({workout}) {
 
@@ -372,9 +481,6 @@ function RenderLowerWorkout({workout}) {
                     <h3>{workout.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
-                    {/* <div>
-                        <img src={videoPlaceholder.src} alt={videoPlaceholder.altText}/>
-                    </div> */}
                     <Row>
                         <Col>
                             <h5 className="custom-font">Description</h5>
