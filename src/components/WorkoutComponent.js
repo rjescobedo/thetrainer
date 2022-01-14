@@ -239,7 +239,7 @@ export default function Workouts(props) {
                                 </Row>
                                 <Row className="form-group">
                                     <Col md={{size: 10, offset: 2}}>
-                                        <Button type="submit" color="primary">Submit Exercise</Button>
+                                        <Button type="submit" color="secondary">Submit Exercise</Button>
                                     </Col>
                                 </Row>
                             </LocalForm>
@@ -251,12 +251,12 @@ export default function Workouts(props) {
                         <div className="col-12 col-lg-6 p-3">
                             <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Upper Body Workout</h4>
                             {upperbodyWorkout}
-                            <Button className="m-3" type="submit" color="primary">Workout Complete</Button>
+                            <Button className="m-3" type="submit" color="secondary">Workout Complete</Button>
                         </div>
                         <div className="col-12 col-lg-6 p-3">
                             <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Lower Body Workout</h4>
                             {lowerbodyWorkout}
-                            <Button className="m-3" type="submit" color="primary">Workout Complete</Button>
+                            <Button className="m-3" type="submit" color="secondary">Workout Complete</Button>
                         </div>
                     </div>
                     <hr/>
@@ -428,7 +428,7 @@ function RenderUpperWorkout({workout}) {
                                         onChange={handleChange}
                                     />
                         </FormGroup>
-                        <Button type="submit" color="primary">Submit Exercise</Button>
+                        <Button type="submit" color="secondary">Submit Exercise</Button>
                     </Form>
                 </ModalBody>
             </Modal>
@@ -521,7 +521,7 @@ function RenderLowerWorkout({workout}) {
                                         onChange={handleChange}
                                     />
                         </FormGroup>
-                        <Button type="submit" color="primary">Submit Exercise</Button>
+                        <Button type="submit" color="secondary">Submit Exercise</Button>
                     </Form>
                 </ModalBody>
             </Modal>

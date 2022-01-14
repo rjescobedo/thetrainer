@@ -9,6 +9,9 @@ import {
 import Image1 from '../images/lifting-pic.jpg';
 import Image2 from '../images/rope-pic.jpg';
 import Image3 from '../images/trainer-pic.jpg';
+import Image4 from '../images/bicep-curl.jpeg';
+import Image5 from '../images/crunches.jpeg';
+import Image6 from '../images/kettlebell.jpeg';
 
 const items = [
   {
@@ -25,7 +28,22 @@ const items = [
     src: Image3,
     altText: 'Slide 3',
     caption: 'Communicate'
-  }
+  },
+  {
+    src: Image4,
+    altText: 'Slide 4',
+    caption: 'Dedication'
+  },
+  {
+    src: Image5,
+    altText: 'Slide 5',
+    caption: 'Resilience'
+  },
+  {
+    src: Image6,
+    altText: 'Slide 6',
+    caption: 'Community'
+  }   
 ];
 
 class Example extends Component {

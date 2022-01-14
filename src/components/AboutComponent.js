@@ -221,7 +221,7 @@ export default function About(props) {
                                 </Row>
                                 <Row className="form-group">
                                     <Col md={{size: 10, offset: 2}}>
-                                        <Button type="submit" color="primary">Submit</Button>
+                                        <Button type="submit" color="secondary">Submit</Button>
                                     </Col>
                                 </Row>
                             </LocalForm>

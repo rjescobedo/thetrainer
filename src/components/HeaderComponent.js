@@ -96,16 +96,17 @@ export default function Header(props) {
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <DarkModeToggle
-                                    className="nav-link"
-                                    onChange={props.toggleDarkMode}
-                                    checked={props.darkMode}
-                                    size={70}
-                                />
+                               
                             </NavItem>
                         </Nav>
+                        <DarkModeToggle
+                            className="nav-link"
+                            onChange={props.toggleDarkMode}
+                            checked={props.darkMode}
+                            size={55}
+                        />
                         <span className="navbar-text ml-auto">
-                            <Button color="primary" onClick={toggleModal}>
+                            <Button color="secondary" onClick={toggleModal}>
                                 <i className="fa fa-sign-in fa-lg" /> Login
                             </Button>
                         </span>
@@ -170,7 +171,7 @@ export default function Header(props) {
                                         /> Remember Me
                                     </Label>
                                 </FormGroup>
-                                <Button className="my-2" type="submit" value="submit" color="primary">Login</Button>
+                                <Button className="my-2" type="submit" value="submit" color="secondary">Login</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
