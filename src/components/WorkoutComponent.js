@@ -9,19 +9,45 @@ import {
     Input, 
     Label,
     Row,
-    Col
+    Col,
+    CustomFileInput
  } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-// import Image1 from '../images/video-placeholder.jpeg';
+ import { Control, LocalForm, Errors} from 'react-redux-form';
+ import { NavLink } from 'react-router-dom';
 
-// const item = [
-//     {
-//         src: Image1,
-//         altText: 'Placeholder'
-//     }
-// ];
+const required = val => val && val.length;
+const maxLength = len => val => !val || (val.length <= len);
+const minLength = len => val => val && (val.length >= len);
+const isNumber = val => !isNaN(+val);
 
 export default function Workouts(props) {
+    const [workoutFormData, setWorkoutFormData] = React.useState({
+        exerciseName: '',
+        sets: '',
+        reps: '',
+        description: '',
+        video: '',
+    });
+
+    function handleChange(event) {
+        const {name, value, type, checked} = event.target
+        setWorkoutFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        alert(`
+            Exercise Name: ${workoutFormData.exerciseName}
+            Sets: ${workoutFormData.sets}
+            Reps: ${workoutFormData.reps}
+            Description: ${workoutFormData.description}
+            Video: ${workoutFormData.video}
+            `)
+    }
 
     const upperbodyWorkout = props.upperworkouts.map(workout => {
         return (
@@ -41,13 +67,163 @@ export default function Workouts(props) {
         return ( 
             <div className={props.darkMode ? 'dark-background' : ''}>
                 <div className="container">
+                    <h1 className="text-center custom-font workout-heading">Custom Exercise Form</h1>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <LocalForm onSubmit={handleSubmit}>
+                                <Row className="form-group">
+                                <Label htmlFor="exerciseName" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Exercise Name</Label>
+                                    <Col md={10}>
+                                        <Control.text 
+                                            model=".exerciseName" 
+                                            id="exerciseName" 
+                                            name="exerciseName"
+                                            placeholder="Exercise Name"
+                                            onChange={handleChange}
+                                            value={workoutFormData.firstName}
+                                            className="form-control"
+                                            validators={{
+                                                required, 
+                                                minLength: minLength(2),
+                                                maxLength: maxLength(15)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".exerciseName"
+                                            show="touched"
+                                            component="div"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be at least 2 characters',
+                                                maxLength: 'Must be 15 characters or less'
+                                            }} 
+                                            />
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
+                                <Label htmlFor="sets" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Sets</Label>
+                                    <Col md={10}>
+                                        <Control.text 
+                                            model=".sets" 
+                                            id="sets" 
+                                            name="sets"
+                                            placeholder="# of Sets"
+                                            onChange={handleChange}
+                                            value={workoutFormData.sets}
+                                            className="form-control"
+                                            validators={{
+                                                required, 
+                                                minLength: minLength(1),
+                                                maxLength: maxLength(15),
+                                                isNumber
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".sets"
+                                            show="touched"
+                                            component="div"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be at least 1 character',
+                                                maxLength: 'Must be 15 characters or less',
+                                                isNumber: 'Must be a number'
+                                            }} 
+                                            />
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
+                                <Label htmlFor="reps" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Reps</Label>
+                                    <Col md={10}>
+                                        <Control.text 
+                                            model=".reps" 
+                                            id="reps" 
+                                            name="reps"
+                                            placeholder="# of Reps"
+                                            onChange={handleChange}
+                                            value={workoutFormData.reps}
+                                            className="form-control"
+                                            validators={{
+                                                required, 
+                                                minLength: minLength(1),
+                                                maxLength: maxLength(15),
+                                                isNumber
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".reps"
+                                            show="touched"
+                                            component="div"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be at least 1 character',
+                                                maxLength: 'Must be 15 characters or less',
+                                                isNumber: 'Must be a number'
+                                            }} 
+                                            />
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
+                                <Label htmlFor="description" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Description</Label>
+                                    <Col md={10}>
+                                        <Control.textarea 
+                                            model=".description" 
+                                            id="description" 
+                                            name="description"
+                                            placeholder="Describe your exercise..."
+                                            rows={5}
+                                            onChange={handleChange}
+                                            value={workoutFormData.description}
+                                            className="form-control"
+                                            validators={{
+                                                required, 
+                                                minLength: minLength(2)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".description"
+                                            show="touched"
+                                            component="div"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be at least 2 character'
+                                            }} 
+                                            />
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
+                                <Label htmlFor="video" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Upload Video</Label>
+                                    <Col md={10}>
+                                        <CustomFileInput
+                                            model=".video" 
+                                            id="video" 
+                                            name="video"
+                                            onChange={handleChange}
+                                            value={workoutFormData.video}
+                                            className="form-control"
+                                        />
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
+                                    <Col md={{size: 10, offset: 2}}>
+                                        <Button type="submit" color="primary">Submit Exercise</Button>
+                                    </Col>
+                                </Row>
+                            </LocalForm>
+                        </div>
+                    </div>
+                    <hr/>
+                    <h1 className="text-center custom-font workout-heading">Workouts</h1>
                     <div className="row">
                         <div className="col-12 col-lg-6 p-3">
-                            <h2 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Upper Body Workout</h2>
+                            <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Upper Body Workout</h4>
                             {upperbodyWorkout}
                         </div>
                         <div className="col-12 col-lg-6 p-3">
-                            <h2 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Lower Body Workout</h2>
+                            <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Lower Body Workout</h4>
                             {lowerbodyWorkout}
                         </div>
                     </div>
@@ -103,9 +279,6 @@ function RenderUpperWorkout({workout}) {
                     <h3>{workout.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
-                    {/* <div>
-                        <img src={item.src} alt={item.altText}/>
-                    </div> */}
                     <Row>
                         <Col>
                             <h5 className="custom-font">Description</h5>
@@ -249,3 +422,4 @@ function RenderLowerWorkout({workout}) {
         </React.Fragment>
     );
 }
+

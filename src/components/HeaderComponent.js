@@ -21,7 +21,7 @@ import DarkModeToggle from 'react-dark-mode-toggle';
 
 export default function Header(props) {
 
-    const [formData, setFormData] = React.useState({
+    const [loginData, setLoginData] = React.useState({
         member: '',
         username: '',
         password: '',
@@ -42,7 +42,7 @@ export default function Header(props) {
 
     function handleChange(event) {
         const {name, value, type, checked} = event.target
-        setFormData(prevFormData => {
+        setLoginData(prevFormData => {
             return {
                 ...prevFormData,
                 [name]: type === "checkbox" ? checked : value
@@ -53,10 +53,10 @@ export default function Header(props) {
     function handleLogin(event) {
         event.preventDefault();
         alert(`
-            Member: ${formData.member}
-            Username: ${formData.username} 
-            Password: ${formData.password} 
-            Remember: ${formData.remember}`);
+            Member: ${loginData.member}
+            Username: ${loginData.username} 
+            Password: ${loginData.password} 
+            Remember: ${loginData.remember}`);
         toggleModal();
     }
 
@@ -123,7 +123,7 @@ export default function Header(props) {
                                         id="trainer" 
                                         name="member"
                                         value="trainer"
-                                        checked={formData.member === "trainer"}
+                                        checked={loginData.member === "trainer"}
                                         onChange={handleChange}
                                     />
                                     <Label htmlFor="trainer" check>Personal Trainer</Label>
@@ -134,7 +134,7 @@ export default function Header(props) {
                                         id="client" 
                                         name="member"
                                         value="client"
-                                        checked={formData.member === "client"}
+                                        checked={loginData.member === "client"}
                                         onChange={handleChange}
                                     />
                                     <Label htmlFor="client" check>Client</Label>
@@ -146,7 +146,7 @@ export default function Header(props) {
                                         id="username" 
                                         name="username"
                                         onChange={handleChange}
-                                        value={formData.username}
+                                        value={loginData.username}
                                     />
                                 </FormGroup>
                                 <FormGroup>
@@ -156,7 +156,7 @@ export default function Header(props) {
                                         id="password" 
                                         name="password"
                                         onChange={handleChange}
-                                        value={formData.password}
+                                        value={loginData.password}
                                     />
                                 </FormGroup>
                                 <FormGroup check>
@@ -165,7 +165,7 @@ export default function Header(props) {
                                             type="checkbox" 
                                             name="remember"
                                             id="remember"
-                                            checked={formData.remember}
+                                            checked={loginData.remember}
                                             onChange={handleChange}
                                         /> Remember Me
                                     </Label>

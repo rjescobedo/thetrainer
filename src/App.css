@@ -60,7 +60,7 @@ body {
 
 /* Dark Mode CSS */
 .dark-background {
-  background-color: black;
+  background-color: rgb(41, 40, 40);
 }
 
 .dark-mode-text {
@@ -81,3 +81,6 @@ hr {
   background-color: white;
 }
 
+.workout-heading {
+  font-size: 4rem;
+}
