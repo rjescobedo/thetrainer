@@ -10,11 +10,7 @@ import {
     Label,
     Row,
     Col,
-    CustomFileInput,
-    ListGroup,
-    ListGroupItem,
-    ListGroupItemHeading,
-    ListGroupItemText
+    CustomFileInput
  } from 'reactstrap';
  import { Control, LocalForm, Errors} from 'react-redux-form';
 
@@ -97,10 +93,10 @@ export default function Workouts(props) {
         return ( 
             <div className={props.darkMode ? 'dark-background' : ''}>
                 <div className="container pt-4">
-                    <h1 className="text-center custom-font workout-heading">Custom Exercise Form</h1>
+                    {props.loginData.member === 'trainer' ? <h1 className="text-center custom-font workout-heading">Custom Exercise Form</h1> : ''}
                     <div className="row">
                         <div className="col-md-12">
-                            <LocalForm onSubmit={handleSubmit}>
+                            {props.loginData.member === 'trainer' ? <LocalForm onSubmit={handleSubmit}>
                                 <Row className="form-group">
                                 <Label htmlFor="exerciseName" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Exercise Name</Label>
                                     <Col md={10}>
@@ -242,10 +238,10 @@ export default function Workouts(props) {
                                         <Button type="submit" color="secondary">Submit Exercise</Button>
                                     </Col>
                                 </Row>
-                            </LocalForm>
+                            </LocalForm> : ''}
                         </div>
                     </div>
-                    <hr/>
+                    {props.loginData.member === 'trainer' ? <hr/> : ''}
                     <h1 className="text-center custom-font workout-heading">Workouts</h1>
                     <div className="row">
                         <div className="col-12 col-lg-6 p-3">

@@ -21,44 +21,13 @@ import DarkModeToggle from 'react-dark-mode-toggle';
 
 export default function Header(props) {
 
-    const [loginData, setLoginData] = React.useState({
-        member: '',
-        username: '',
-        password: '',
-        remember: true
-    });
     const [isNavOpen, setIsNavOpen] = React.useState(false);
     
     
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
-
     function toggleNav() {
         setIsNavOpen(prevNav => !prevNav)
     }
 
-    function toggleModal() {
-        setIsModalOpen(prevModal => !prevModal)
-    }
-
-    function handleChange(event) {
-        const {name, value, type, checked} = event.target
-        setLoginData(prevFormData => {
-            return {
-                ...prevFormData,
-                [name]: type === "checkbox" ? checked : value
-            }
-        })
-    }
-
-    function handleLogin(event) {
-        event.preventDefault();
-        alert(`
-            Member: ${loginData.member}
-            Username: ${loginData.username} 
-            Password: ${loginData.password} 
-            Remember: ${loginData.remember}`);
-        toggleModal();
-    }
 
         return (
             <React.Fragment>
@@ -106,7 +75,7 @@ export default function Header(props) {
                             size={55}
                         />
                         <span className="navbar-text ml-auto">
-                            <Button color="secondary" onClick={toggleModal}>
+                            <Button color="secondary" onClick={props.toggleModal}>
                                 <i className="fa fa-sign-in fa-lg" /> Login
                             </Button>
                         </span>
@@ -114,18 +83,18 @@ export default function Header(props) {
                 </div>
                 </Navbar>
 
-                <Modal isOpen={isModalOpen} toggle={toggleModal}>
-                    <ModalHeader toggle={toggleModal}>Login</ModalHeader>
+                <Modal isOpen={props.isModalOpen} toggle={props.toggleModal}>
+                    <ModalHeader toggle={props.toggleModal}>Login</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={handleLogin}>
+                        <Form onSubmit={props.handleLogin}>
                                 <FormGroup check>
                                     <Input 
                                         type="radio" 
                                         id="trainer" 
                                         name="member"
                                         value="trainer"
-                                        checked={loginData.member === "trainer"}
-                                        onChange={handleChange}
+                                        checked={props.loginData.member === "trainer"}
+                                        onChange={props.handleChange}
                                     />
                                     <Label htmlFor="trainer" check>Personal Trainer</Label>
                                 </FormGroup>
@@ -135,8 +104,8 @@ export default function Header(props) {
                                         id="client" 
                                         name="member"
                                         value="client"
-                                        checked={loginData.member === "client"}
-                                        onChange={handleChange}
+                                        checked={props.loginData.member === "client"}
+                                        onChange={props.handleChange}
                                     />
                                     <Label htmlFor="client" check>Client</Label>
                                 </FormGroup>
@@ -146,8 +115,8 @@ export default function Header(props) {
                                         type="text" 
                                         id="username" 
                                         name="username"
-                                        onChange={handleChange}
-                                        value={loginData.username}
+                                        onChange={props.handleChange}
+                                        value={props.loginData.username}
                                     />
                                 </FormGroup>
                                 <FormGroup>
@@ -156,8 +125,8 @@ export default function Header(props) {
                                         type="password" 
                                         id="password" 
                                         name="password"
-                                        onChange={handleChange}
-                                        value={loginData.password}
+                                        onChange={props.handleChange}
+                                        value={props.loginData.password}
                                     />
                                 </FormGroup>
                                 <FormGroup check>
@@ -166,8 +135,8 @@ export default function Header(props) {
                                             type="checkbox" 
                                             name="remember"
                                             id="remember"
-                                            checked={loginData.remember}
-                                            onChange={handleChange}
+                                            checked={props.loginData.remember}
+                                            onChange={props.handleChange}
                                         /> Remember Me
                                     </Label>
                                 </FormGroup>

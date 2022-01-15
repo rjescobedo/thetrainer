@@ -10,8 +10,42 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 export default function Main (props) {
 
-    const [upperbody, setUpperBody] = React.useState(UPPERBODYWORKOUT);
-    const [lowerbody, setLowerBody] = React.useState(LOWERBODYWORKOUT);
+    
+        const [loginData, setLoginData] = React.useState({
+            member: '',
+            username: '',
+            password: '',
+            remember: true
+        });
+
+        const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+        function toggleModal() {
+            setIsModalOpen(prevModal => !prevModal)
+        }
+    
+        function handleChange(event) {
+            const {name, value, type, checked} = event.target
+            setLoginData(prevFormData => {
+                return {
+                    ...prevFormData,
+                    [name]: type === "checkbox" ? checked : value
+                }
+            })
+        }
+    
+        function handleLogin(event) {
+            event.preventDefault();
+            alert(`
+                Member: ${loginData.member}
+                Username: ${loginData.username} 
+                Password: ${loginData.password} 
+                Remember: ${loginData.remember}`);
+            toggleModal();
+        }
+
+    const [upperbody] = React.useState(UPPERBODYWORKOUT);
+    const [lowerbody] = React.useState(LOWERBODYWORKOUT);
     const [darkMode, setDarkMode] = React.useState(false);
 
     function toggleDarkMode() {
@@ -30,6 +64,11 @@ export default function Main (props) {
                 <Header
                     darkMode={darkMode}
                     toggleDarkMode={toggleDarkMode}
+                    isModalOpen={isModalOpen}
+                    toggleModal={toggleModal}
+                    loginData={loginData}
+                    handleChange={handleChange}
+                    handleLogin={handleLogin}
                 />
                 <Switch>
                     <Route path='/home' component={HomePage} />
@@ -38,6 +77,7 @@ export default function Main (props) {
                             upperworkouts={upperbody} 
                             lowerworkouts={lowerbody}
                             darkMode={darkMode}
+                            loginData={loginData}
                         />} 
                     />
                     <Route exact path='/about' render={() =>
