@@ -36,11 +36,8 @@ export default function Main (props) {
     
         function handleLogin(event) {
             event.preventDefault();
-            alert(`
-                Member: ${loginData.member}
-                Username: ${loginData.username} 
-                Password: ${loginData.password} 
-                Remember: ${loginData.remember}`);
+            console.log(`Login Data State: ${JSON.stringify(loginData)}`)
+            alert(`You are logged in!`);
             toggleModal();
         }
 

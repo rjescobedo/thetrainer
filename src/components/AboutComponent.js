@@ -37,13 +37,8 @@ export default function About(props) {
     }
 
     function handleSubmit(event) {
-        alert(`
-            First Name: ${formData.firstName}
-            Last Name: ${formData.lastName} 
-            Phone: ${formData.phone} 
-            Email: ${formData.email} 
-            Comments: ${formData.comments} 
-            Agree: ${formData.agree} `)
+        console.log(`Contact Form State: ${JSON.stringify(formData)}`);
+        alert(`Thank you for you comments! We will reach out to you within 48 business hours.`)
     }
         
         return (
