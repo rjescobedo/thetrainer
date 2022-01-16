@@ -10,9 +10,11 @@ import {
     Label,
     Row,
     Col,
-    CustomFileInput
+    CustomFileInput,
+    Media
  } from 'reactstrap';
  import { Control, LocalForm, Errors} from 'react-redux-form';
+
 
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
@@ -293,7 +295,23 @@ function RenderUpperbodyExercise({upperExercise}) {
                 <ModalBody>
                     <Row>
                         <Col>
-                            <h5 className="custom-font">Description</h5>
+                        {upperExercise.video ?<iframe
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                src={upperExercise.video}
+                                alt={upperExercise.exercise}
+                                width="100%"
+                                height="300"
+                            /> : <Media 
+                                    src="https://i0.wp.com/urbanpolicyplatform.org/wp-content/uploads/2020/10/video-comingsoon.jpg?ssl=1" 
+                                    alt="Video Coming Soon"
+                                    width="100%" />}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h4 className="custom-font pt-3">Description</h4>
                             {upperExercise.description}
                         </Col>
                     </Row>
@@ -324,6 +342,22 @@ function RenderLowerbodyExercise({lowerExercise}) {
                     <h3>{lowerExercise.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
+                <Row>
+                        <Col>
+                        {lowerExercise.video ?<iframe
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                src={lowerExercise.video}
+                                alt={lowerExercise.exercise}
+                                width="100%"
+                                height="300"
+                            /> : <Media 
+                                    src="https://i0.wp.com/urbanpolicyplatform.org/wp-content/uploads/2020/10/video-comingsoon.jpg?ssl=1" 
+                                    alt="Video Coming Soon"
+                                    width="100%" />}
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
                             <h5 className="custom-font">Description</h5>
@@ -384,9 +418,25 @@ function RenderUpperWorkout({workout}) {
                     <h3>{workout.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
+                <Row>
+                        <Col>
+                        {workout.video ?<iframe
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                src={workout.video}
+                                alt={workout.exercise}
+                                width="100%"
+                                height="300"
+                            /> : <Media 
+                                    src="https://i0.wp.com/urbanpolicyplatform.org/wp-content/uploads/2020/10/video-comingsoon.jpg?ssl=1" 
+                                    alt="Video Coming Soon"
+                                    width="100%" />}
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
-                            <h5 className="custom-font">Description</h5>
+                            <h4 className="custom-font pt-3">Description</h4>
                             {workout.description}
                         </Col>
                     </Row>
@@ -477,9 +527,25 @@ function RenderLowerWorkout({workout}) {
                     <h3>{workout.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
+                <Row>
+                        <Col>
+                        {workout.video ?<iframe
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                src={workout.video}
+                                alt={workout.exercise}
+                                width="100%"
+                                height="300"
+                            /> : <Media 
+                                    src="https://i0.wp.com/urbanpolicyplatform.org/wp-content/uploads/2020/10/video-comingsoon.jpg?ssl=1" 
+                                    alt="Video Coming Soon"
+                                    width="100%" />}
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
-                            <h5 className="custom-font">Description</h5>
+                            <h4 className="custom-font pt-3">Description</h4>
                             {workout.description}
                         </Col>
                     </Row>

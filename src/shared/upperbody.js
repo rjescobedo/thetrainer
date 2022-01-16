@@ -4,6 +4,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Chest Press",
         sets: "3",
         reps: "10",
+        video: "https://www.youtube.com/embed/MHmUt6StMdc",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -11,6 +12,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Chest Flys",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -18,6 +20,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Tricep Press",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -25,6 +28,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Over the Head",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -32,6 +36,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Lat Pull Down",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -39,6 +44,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Cable Row",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -46,6 +52,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Single Arm Curls",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -53,6 +60,7 @@ export const UPPERBODYWORKOUT = [
         exercise: "Bicep Curls",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
 ]

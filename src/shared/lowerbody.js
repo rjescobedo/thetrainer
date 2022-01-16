@@ -4,6 +4,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "Squat",
         sets: "3",
         reps: "10",
+        video: "https://www.youtube.com/embed/v__DckapxUw",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -11,6 +12,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "Jump Squat",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -18,6 +20,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "Lying Leg Curl",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -25,6 +28,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "Romanian Deadlift",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -32,6 +36,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "Leg Press Calf Raise",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -39,6 +44,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "Lunge",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -46,6 +52,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "Leg Press",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
     {
@@ -53,6 +60,7 @@ export const LOWERBODYWORKOUT = [
         exercise: "One-Leg Calf Raise",
         sets: "3",
         reps: "10",
+        video: "",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt cupiditate asperiores laborum, doloremque commodi? Libero aliquam unde deserunt quam."
     },
 ]

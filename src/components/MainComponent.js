@@ -8,6 +8,7 @@ import { UPPERBODYWORKOUT } from '../shared/upperbody';
 import { LOWERBODYWORKOUT } from '../shared/lowerbody';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+
 export default function Main (props) {
     const [upperbody] = React.useState(UPPERBODYWORKOUT);
     const [lowerbody] = React.useState(LOWERBODYWORKOUT);
@@ -37,7 +38,8 @@ export default function Main (props) {
     function handleLogin(event) {
         event.preventDefault();
         console.log(`Login Data State: ${JSON.stringify(loginData)}`)
-        alert(`You are logged in, ${loginData.username}!`);
+        alert(`
+        You are logged in, ${loginData.username}!`);
         toggleModal();
     }
 
@@ -48,7 +50,8 @@ export default function Main (props) {
             password: '',
             remember: true
         }));
-        alert(`You are logged out, ${loginData.username}!`);
+        alert(`
+        You are logged out!`);
     }
 
     function toggleDarkMode() {
