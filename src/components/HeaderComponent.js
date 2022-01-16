@@ -75,9 +75,11 @@ export default function Header(props) {
                             size={55}
                         />
                         <span className="navbar-text ml-auto">
-                            <Button color="secondary" onClick={props.toggleModal}>
+                            {props.loginData.member === '' ? <Button color="secondary" onClick={props.toggleModal}>
                                 <i className="fa fa-sign-in fa-lg" /> Login
-                            </Button>
+                            </Button> : <Button color="secondary" onClick={props.handleLogout}>
+                                <i className="fa fa-sign-out fa-lg" /> Logout
+                            </Button>}
                         </span>
                     </Collapse>
                 </div>

@@ -9,44 +9,51 @@ import { LOWERBODYWORKOUT } from '../shared/lowerbody';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 export default function Main (props) {
+    const [upperbody] = React.useState(UPPERBODYWORKOUT);
+    const [lowerbody] = React.useState(LOWERBODYWORKOUT);
+    const [darkMode, setDarkMode] = React.useState(false);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [loginData, setLoginData] = React.useState({
+        member: '',
+        username: '',
+        password: '',
+        remember: true
+    });
 
+    function toggleModal() {
+        setIsModalOpen(prevModal => !prevModal)
+    }
     
-        const [loginData, setLoginData] = React.useState({
+    function handleChange(event) {
+        const {name, value, type, checked} = event.target
+        setLoginData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+    
+    function handleLogin(event) {
+        event.preventDefault();
+        console.log(`Login Data State: ${JSON.stringify(loginData)}`)
+        alert(`You are logged in, ${loginData.username}!`);
+        toggleModal();
+    }
+
+    function handleLogout() {
+        setLoginData(() => ({
             member: '',
             username: '',
             password: '',
             remember: true
-        });
-
-        const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-        function toggleModal() {
-            setIsModalOpen(prevModal => !prevModal)
-        }
-    
-        function handleChange(event) {
-            const {name, value, type, checked} = event.target
-            setLoginData(prevFormData => {
-                return {
-                    ...prevFormData,
-                    [name]: type === "checkbox" ? checked : value
-                }
-            })
-        }
-    
-        function handleLogin(event) {
-            event.preventDefault();
-            console.log(`Login Data State: ${JSON.stringify(loginData)}`)
-            alert(`You are logged in!`);
-            toggleModal();
-        }
-
-    const [upperbody] = React.useState(UPPERBODYWORKOUT);
-    const [lowerbody] = React.useState(LOWERBODYWORKOUT);
-    const [darkMode, setDarkMode] = React.useState(false);
+        }));
+        alert(`You are logged out, ${loginData.username}!`);
+    }
 
     function toggleDarkMode() {
         setDarkMode(prevMode => ! prevMode)
+        
     }
 
     const HomePage = () => {
@@ -66,6 +73,7 @@ export default function Main (props) {
                     loginData={loginData}
                     handleChange={handleChange}
                     handleLogin={handleLogin}
+                    handleLogout={handleLogout}
                 />
                 <Switch>
                     <Route path='/home' component={HomePage} />
