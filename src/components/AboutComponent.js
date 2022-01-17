@@ -3,7 +3,8 @@ import {
     Button, 
     Label,  
     Col,
-    Row
+    Row, 
+    Alert
 } from 'reactstrap';
 import { Control, LocalForm, Errors} from 'react-redux-form';
 
@@ -15,7 +16,6 @@ const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 
 export default function About(props) {
-
     const [formData, setFormData] = React.useState({
         firstName:'',
         lastName:'',
@@ -36,10 +36,11 @@ export default function About(props) {
         })
     }
 
-    function handleSubmit(event) {
+    function handleSubmit() {
         console.log(`Contact Form State: ${JSON.stringify(formData)}`);
-        alert(`Thank you for you comments! We will reach out to you within 48 business hours.`)
+        alert(`We will reach out you within 48 hours!`);
     }
+
         
         return (
             <div className={props.darkMode ? 'dark-background dark-mode-text' : ''}>

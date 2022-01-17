@@ -7,6 +7,8 @@ import About from './AboutComponent';
 import { UPPERBODYWORKOUT } from '../shared/upperbody';
 import { LOWERBODYWORKOUT } from '../shared/lowerbody';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 
 
 export default function Main (props) {
@@ -78,21 +80,25 @@ export default function Main (props) {
                     handleLogin={handleLogin}
                     handleLogout={handleLogout}
                 />
-                <Switch>
-                    <Route path='/home' component={HomePage} />
-                    <Route exact path='/workouts' render={() => 
-                        <Workouts 
-                            upperworkouts={upperbody} 
-                            lowerworkouts={lowerbody}
-                            darkMode={darkMode}
-                            loginData={loginData}
-                        />} 
-                    />
-                    <Route exact path='/about' render={() =>
-                        <About darkMode={darkMode}/>
-                    }/>
-                    <Redirect to='/home' />
-                </Switch>
+                <TransitionGroup>
+                    <CSSTransition key={darkMode} classNames="page" timeout={300}>
+                        <Switch>
+                            <Route path='/home' component={HomePage} />
+                            <Route exact path='/workouts' render={() => 
+                                <Workouts 
+                                    upperworkouts={upperbody} 
+                                    lowerworkouts={lowerbody}
+                                    darkMode={darkMode}
+                                    loginData={loginData}
+                                />} 
+                            />
+                            <Route exact path='/about' render={() =>
+                                <About darkMode={darkMode}/>
+                            }/>
+                            <Redirect to='/home' />
+                        </Switch>
+                    </CSSTransition>
+                </TransitionGroup>
                 <Footer darkMode={darkMode}/>
             </div>
         );
