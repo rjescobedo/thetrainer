@@ -6,6 +6,7 @@ import Workouts from './WorkoutComponent';
 import About from './AboutComponent';
 import { UPPERBODYWORKOUT } from '../shared/upperbody';
 import { LOWERBODYWORKOUT } from '../shared/lowerbody';
+import { EXERCISES } from '../shared/exercises';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -14,6 +15,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 export default function Main (props) {
     const [upperbody] = React.useState(UPPERBODYWORKOUT);
     const [lowerbody] = React.useState(LOWERBODYWORKOUT);
+    const [exercises] = React.useState(EXERCISES);
     const [darkMode, setDarkMode] = React.useState(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [loginData, setLoginData] = React.useState({
@@ -88,6 +90,7 @@ export default function Main (props) {
                                 <Workouts 
                                     upperworkouts={upperbody} 
                                     lowerworkouts={lowerbody}
+                                    exercises={exercises}
                                     darkMode={darkMode}
                                     loginData={loginData}
                                 />} 

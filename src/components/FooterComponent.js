@@ -25,7 +25,7 @@ export default function Footer(props) {
                 </div>
                 <div className="row text-center pt-4">
                     <div className="col">
-                        <span class={props.darkMode ? 'dark-mode-footer' : 'text-muted'}>&copy; 2021 The Trainer, Inc.</span>
+                        <span className={props.darkMode ? 'dark-mode-footer' : 'text-muted'}>&copy; 2021 The Trainer, Inc.</span>
                     </div>
                 </div>
             </div>

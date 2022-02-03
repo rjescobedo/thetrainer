@@ -25,6 +25,7 @@ export default function Workouts(props) {
 
     const [workoutFormData, setWorkoutFormData] = React.useState({
         exerciseName: '',
+        type: '',
         sets: '',
         reps: '',
         description: '',
@@ -44,6 +45,7 @@ export default function Workouts(props) {
     function handleSubmit(event) {
         alert(`
             Exercise Name: ${workoutFormData.exerciseName}
+            Type: ${workoutFormData.type}
             Sets: ${workoutFormData.sets}
             Reps: ${workoutFormData.reps}
             Description: ${workoutFormData.description}
@@ -51,47 +53,40 @@ export default function Workouts(props) {
             `)
     }
 
-    const upperbodyWorkout = props.upperworkouts.map(workout => {
+       
+    const upperbodyWorkout = props.exercises.filter(upperWorkout => upperWorkout.type === 'upperbody').map(filteredUpperWorkout => {
         return (
-            <div className="col" key={workout.id}>
-                <RenderUpperWorkout workout={workout} />
+            <div className="col" key={filteredUpperWorkout.id}>
+                <RenderUpperWorkout filteredUpperWorkout={filteredUpperWorkout} />
             </div>
         );
-    });
+    })
 
-    const lowerbodyWorkout = props.lowerworkouts.map(workout => {
+
+    const lowerbodyWorkout = props.exercises.filter(lowerWorkout => lowerWorkout.type === 'lowerbody').map(filteredLowerWorkout => {
         return (
-            <div className="col" key={workout.id}>
-                <RenderLowerWorkout workout={workout} />
+            <div className="col" key={filteredLowerWorkout.id}>
+                <RenderLowerWorkout filteredLowerWorkout={filteredLowerWorkout} />
             </div>
         );   
     });
 
-    const upperbodyExercises = props.upperworkouts.map(upperExercise => {
+    const upperbodyExercises = props.exercises.filter(upperExercise => upperExercise.type === 'upperbody').map(filteredExercise => {
         return (
-            <div key={upperExercise.id}>
-                <RenderUpperbodyExercise upperExercise={upperExercise} />
+            <div key={filteredExercise.id}>
+                <RenderUpperbodyExercise filteredExercise={filteredExercise} />
             </div>  
         );   
     });
 
-    const lowerbodyExercises = props.lowerworkouts.map(lowerExercise => {
+    const lowerbodyExercises = props.exercises.filter(lowerExercise => lowerExercise.type === 'lowerbody').map(filteredExercise => {
         return (
-            <div key={lowerExercise.id}>
-                <RenderLowerbodyExercise lowerExercise={lowerExercise} />
+            <div key={filteredExercise.id}>
+                <RenderLowerbodyExercise filteredExercise={filteredExercise} />
             </div>  
         );   
     });
 
-    // Scrolling Exercises
-    // const divStyle={
-    //     overflowY: 'scroll',
-    //     border:'2px solid #4f07d4',
-    //     width:'600px',
-    //     float: 'left',
-    //     height:'300px',
-    //     position:'relative'
-    //   };
         return ( 
             <div className={props.darkMode ? 'dark-background' : ''}>
                 <div className="container pt-4">
@@ -127,6 +122,24 @@ export default function Workouts(props) {
                                                 maxLength: 'Must be 15 characters or less'
                                             }} 
                                             />
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
+                                <Label htmlFor="type" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Type</Label>
+                                    <Col md={10}>
+                                        <Input
+                                            type="select"
+                                            model=".type" 
+                                            id="type" 
+                                            name="type"
+                                            onChange={handleChange}
+                                            value={workoutFormData.type}
+                                            className="form-control">
+                                                <option value="">-- Select Exercise Type --</option>
+                                                <option value="upperbody">Upperbody</option>
+                                                <option value="lowerbody">Lowerbody</option>
+                                                <option value="cardio">Cardio</option>
+                                        </Input>
                                     </Col>
                                 </Row>
                                 <Row className="form-group">
@@ -263,7 +276,6 @@ export default function Workouts(props) {
                             <h1 className="text-center custom-font workout-heading">Exercises</h1>
                                 {upperbodyExercises}
                                 {lowerbodyExercises}
-                            
                         </div>
                     </div>
                 </div>
@@ -272,7 +284,7 @@ export default function Workouts(props) {
     
 }
 
-function RenderUpperbodyExercise({upperExercise}) {
+function RenderUpperbodyExercise({filteredExercise}) {
     const [isModalOpen, setModalOpen] = React.useState(false);
 
     function toggleExerciseModal() {
@@ -283,24 +295,24 @@ function RenderUpperbodyExercise({upperExercise}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {upperExercise.exercise}
+                  {filteredExercise.exercise}
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
             </div>
 
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{upperExercise.exercise}</h3>
+                    <h3>{filteredExercise.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
                     <Row>
                         <Col>
-                        {upperExercise.video ?<iframe
+                        {filteredExercise.video ?<iframe
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                src={upperExercise.video}
-                                alt={upperExercise.exercise}
+                                src={filteredExercise.video}
+                                alt={filteredExercise.exercise}
                                 width="100%"
                                 height="300"
                             /> : <Media 
@@ -312,7 +324,7 @@ function RenderUpperbodyExercise({upperExercise}) {
                     <Row>
                         <Col>
                             <h4 className="custom-font pt-3">Description</h4>
-                            {upperExercise.description}
+                            {filteredExercise.description}
                         </Col>
                     </Row>
                 </ModalBody>
@@ -321,7 +333,7 @@ function RenderUpperbodyExercise({upperExercise}) {
     );
 }
 
-function RenderLowerbodyExercise({lowerExercise}) {
+function RenderLowerbodyExercise({filteredExercise}) {
     const [isModalOpen, setModalOpen] = React.useState(false);
 
     function toggleExerciseModal() {
@@ -332,24 +344,24 @@ function RenderLowerbodyExercise({lowerExercise}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {lowerExercise.exercise}
+                  {filteredExercise.exercise}
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
             </div>
 
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{lowerExercise.exercise}</h3>
+                    <h3>{filteredExercise.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
                 <Row>
                         <Col>
-                        {lowerExercise.video ?<iframe
+                        {filteredExercise.video ?<iframe
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                src={lowerExercise.video}
-                                alt={lowerExercise.exercise}
+                                src={filteredExercise.video}
+                                alt={filteredExercise.exercise}
                                 width="100%"
                                 height="300"
                             /> : <Media 
@@ -361,7 +373,7 @@ function RenderLowerbodyExercise({lowerExercise}) {
                     <Row>
                         <Col>
                             <h5 className="custom-font">Description</h5>
-                            {lowerExercise.description}
+                            {filteredExercise.description}
                         </Col>
                     </Row>
                 </ModalBody>
@@ -372,7 +384,7 @@ function RenderLowerbodyExercise({lowerExercise}) {
 
 
 
-function RenderUpperWorkout({workout}) {
+function RenderUpperWorkout({filteredUpperWorkout}) {
 
     const [isModalOpen, setModalOpen] = React.useState(false);
     const [workoutData, setWorkoutData] = React.useState({
@@ -407,25 +419,25 @@ function RenderUpperWorkout({workout}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {workout.exercise}
-                  <span class="text-secondary ml-auto">{workout.sets} sets / {workout.reps} reps</span>
+                  {filteredUpperWorkout.exercise}
+                  <span class="text-secondary ml-auto">{filteredUpperWorkout.sets} sets / {filteredUpperWorkout.reps} reps</span>
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
             </div>
 
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{workout.exercise}</h3>
+                    <h3>{filteredUpperWorkout.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
                 <Row>
                         <Col>
-                        {workout.video ?<iframe
+                        {filteredUpperWorkout.video ?<iframe
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                src={workout.video}
-                                alt={workout.exercise}
+                                src={filteredUpperWorkout.video}
+                                alt={filteredUpperWorkout.exercise}
                                 width="100%"
                                 height="300"
                             /> : <Media 
@@ -437,7 +449,7 @@ function RenderUpperWorkout({workout}) {
                     <Row>
                         <Col>
                             <h4 className="custom-font pt-3">Description</h4>
-                            {workout.description}
+                            {filteredUpperWorkout.description}
                         </Col>
                     </Row>
                     <Form onSubmit={handleSubmit}>
@@ -447,7 +459,7 @@ function RenderUpperWorkout({workout}) {
                                         type="text" 
                                         id="sets" 
                                         name="sets"
-                                        placeholder={workout.sets}
+                                        placeholder={filteredUpperWorkout.sets}
                                         value={workoutData.sets}
                                         onChange={handleChange}
                                     />
@@ -458,7 +470,7 @@ function RenderUpperWorkout({workout}) {
                                         type="text" 
                                         id="reps" 
                                         name="reps"
-                                        placeholder={workout.reps}
+                                        placeholder={filteredUpperWorkout.reps}
                                         value={workoutData.reps}
                                         onChange={handleChange}
                                     />
@@ -482,7 +494,7 @@ function RenderUpperWorkout({workout}) {
     );
 }
 
-function RenderLowerWorkout({workout}) {
+function RenderLowerWorkout({filteredLowerWorkout}) {
     const [isModalOpen, setModalOpen] = React.useState(false);
     const [workoutData, setWorkoutData] = React.useState({
         sets: '',
@@ -516,25 +528,25 @@ function RenderLowerWorkout({workout}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {workout.exercise}
-                  <span class="text-secondary ml-auto">{workout.sets} sets / {workout.reps} reps</span>
+                  {filteredLowerWorkout.exercise}
+                  <span class="text-secondary ml-auto">{filteredLowerWorkout.sets} sets / {filteredLowerWorkout.reps} reps</span>
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
             </div>
 
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{workout.exercise}</h3>
+                    <h3>{filteredLowerWorkout.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
                 <Row>
                         <Col>
-                        {workout.video ?<iframe
+                        {filteredLowerWorkout.video ?<iframe
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                src={workout.video}
-                                alt={workout.exercise}
+                                src={filteredLowerWorkout.video}
+                                alt={filteredLowerWorkout.exercise}
                                 width="100%"
                                 height="300"
                             /> : <Media 
@@ -546,7 +558,7 @@ function RenderLowerWorkout({workout}) {
                     <Row>
                         <Col>
                             <h4 className="custom-font pt-3">Description</h4>
-                            {workout.description}
+                            {filteredLowerWorkout.description}
                         </Col>
                     </Row>
                     <Form onSubmit={handleSubmit}>
@@ -556,7 +568,7 @@ function RenderLowerWorkout({workout}) {
                                         type="text" 
                                         id="sets" 
                                         name="sets"
-                                        placeholder={workout.sets}
+                                        placeholder={filteredLowerWorkout.sets}
                                         value={workoutData.sets}
                                         onChange={handleChange}
                                     />
@@ -567,7 +579,7 @@ function RenderLowerWorkout({workout}) {
                                         type="text" 
                                         id="reps" 
                                         name="reps"
-                                        placeholder={workout.reps}
+                                        placeholder={filteredLowerWorkout.reps}
                                         value={workoutData.reps}
                                         onChange={handleChange}
                                     />
