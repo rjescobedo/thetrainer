@@ -5,7 +5,6 @@ import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
 import About from './AboutComponent';
 //import { EXERCISES } from '../shared/exercises';
-//import { EXERCISES } from '../shared/exercises';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';

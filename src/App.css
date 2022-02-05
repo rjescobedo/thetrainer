@@ -4,6 +4,7 @@ body {
   :root {
     --clr-accent: #4f07d4;
     --clr-background: linear-gradient(200deg, #4f07d4 23%, #3b0898 54%);
+
   }
 
 .jumbotron {
