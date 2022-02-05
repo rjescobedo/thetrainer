@@ -4,7 +4,8 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
 import About from './AboutComponent';
-import { EXERCISES } from '../shared/exercises';
+//import { EXERCISES } from '../shared/exercises';
+//import { EXERCISES } from '../shared/exercises';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -14,9 +15,8 @@ const mapStateToProps = state => {
         exercises: state.exercises
     }
 };
-
     function Main (props) {
-    const [exercises] = React.useState(EXERCISES);
+    //const [exercises] = React.useState(EXERCISES);
     const [darkMode, setDarkMode] = React.useState(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [loginData, setLoginData] = React.useState({
