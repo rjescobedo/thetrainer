@@ -107,8 +107,8 @@ export default function Workouts(props) {
                                             name="type"
                                             className="form-control">
                                                 <option value="">-- Select Exercise Type --</option>
-                                                <option value="upperbody">Upperbody</option>
-                                                <option value="lowerbody">Lowerbody</option>
+                                                <option value="upperbody">Upper Body</option>
+                                                <option value="lowerbody">Lower Body</option>
                                                 <option value="cardio">Cardio</option>
                                         </Input>
                                     </Col>
