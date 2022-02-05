@@ -1,6 +1,11 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; }
 
+  :root {
+    --clr-accent: #4f07d4;
+    --clr-background: linear-gradient(200deg, #4f07d4 23%, #3b0898 54%);
+  }
+
 .jumbotron {
   background: linear-gradient(200deg, #4f07d4 23%, #3b0898 54%);
   color: white;
@@ -8,11 +13,11 @@ body {
   margin: 0;
 }
 .custom-background {
-  background: #4f07d4;
+  background: var(--clr-accent);
 }
 
 .navbar {
-  background: linear-gradient(200deg, #4f07d4 23%, #3b0898 54%);
+  background: var(--clr-background);
 }
 
 .trainer-text {
@@ -37,12 +42,12 @@ body {
 }
 
 .custom-font {
-  color: #4f07d4; 
+  color: var(--clr-accent); 
 }
 
 
 .btn-custom {
-  background-color: #4f07d4;
+  background-color: var(--clr-accent);
   color: white; 
 }
 
@@ -74,11 +79,11 @@ body {
 
 .dark-mode-card {
   color: white;
-  background: linear-gradient(200deg, #4f07d4 23%, #3b0898 54%);
+  background: var(--clr-background);
 }
 
 .dark-mode-footer {
-  background: linear-gradient(200deg, #4f07d4 23%, #3b0898 54%);
+  background: var(--clr-background);
   color: white;
 }
 
