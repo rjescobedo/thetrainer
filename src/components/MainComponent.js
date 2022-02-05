@@ -4,18 +4,19 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Workouts from './WorkoutComponent';
 import About from './AboutComponent';
-import { UPPERBODYWORKOUT } from '../shared/upperbody';
-import { LOWERBODYWORKOUT } from '../shared/lowerbody';
-import { EXERCISES } from '../shared/exercises';
-import { Switch, Route, Redirect } from 'react-router-dom';
+//import { EXERCISES } from '../shared/exercises';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
+const mapStateToProps = state => {
+    return {
+        exercises: state.exercises
+    }
+}
 
-
-export default function Main (props) {
-    const [upperbody] = React.useState(UPPERBODYWORKOUT);
-    const [lowerbody] = React.useState(LOWERBODYWORKOUT);
-    const [exercises] = React.useState(EXERCISES);
+    function Main (props) {
+    //const [exercises] = React.useState(EXERCISES);
     const [darkMode, setDarkMode] = React.useState(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [loginData, setLoginData] = React.useState({
@@ -88,9 +89,7 @@ export default function Main (props) {
                             <Route path='/home' component={HomePage} />
                             <Route exact path='/workouts' render={() => 
                                 <Workouts 
-                                    upperworkouts={upperbody} 
-                                    lowerworkouts={lowerbody}
-                                    exercises={exercises}
+                                    exercises={props.exercises}
                                     darkMode={darkMode}
                                     loginData={loginData}
                                 />} 
@@ -106,5 +105,7 @@ export default function Main (props) {
             </div>
         );
 }
+
+export default withRouter(connect(mapStateToProps)(Main));
 
 
