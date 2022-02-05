@@ -3,11 +3,8 @@ import {
     Button, 
     Label,  
     Col,
-    Row, 
-    Alert
-} from 'reactstrap';
+    Row } from 'reactstrap';
 import { Control, LocalForm, Errors} from 'react-redux-form';
-
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
@@ -16,29 +13,29 @@ const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 
 export default function About(props) {
-    const [formData, setFormData] = React.useState({
-        firstName:'',
-        lastName:'',
-        phone:'',
-        email:'',
-        comments:'',
-        agree: false
+    // const [formData, setFormData] = React.useState({
+    //     firstName:'',
+    //     lastName:'',
+    //     phone:'',
+    //     email:'',
+    //     comments:'',
+    //     agree: false
 
-    });
+    // });
 
-    function handleChange(event) {
-        const {name, value, type, checked} = event.target
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [name]: type === "checkbox" ? checked : value
-            }
-        })
-    }
+    // function handleChange(event) {
+    //     const {name, value, type, checked} = event.target
+    //     setFormData(prevFormData => {
+    //         return {
+    //             ...prevFormData,
+    //             [name]: type === "checkbox" ? checked : value
+    //         }
+    //     })
+    // }
 
-    function handleSubmit() {
-        console.log(`Contact Form State: ${JSON.stringify(formData)}`);
-        alert(`We will reach out you within 48 hours!`);
+    function handleSubmit(values) {
+        console.log(`Contact Form State: ${JSON.stringify(values)}`);
+        alert(`Contact Form State: ${JSON.stringify(values)}`);
     }
 
         
@@ -63,7 +60,7 @@ export default function About(props) {
                             <hr />
                         </div>
                         <div className="col-md-12">
-                            <LocalForm onSubmit={handleSubmit}>
+                            <LocalForm onSubmit={values => handleSubmit(values)}>
                                 <Row className="form-group">
                                     <Label htmlFor="firstName" md={2}>First Name</Label>
                                     <Col md={10}>
@@ -72,8 +69,8 @@ export default function About(props) {
                                             id="firstName" 
                                             name="firstName"
                                             placeholder="First Name"
-                                            onChange={handleChange}
-                                            value={formData.firstName}
+                                            // onChange={handleChange}
+                                            // value={formData.firstName}
                                             className="form-control"
                                             validators={{
                                                 required, 
@@ -101,8 +98,8 @@ export default function About(props) {
                                             model=".lastName" 
                                             id="lastName" 
                                             name="lastName"
-                                            onChange={handleChange}
-                                            value={formData.lastName}
+                                            // onChange={handleChange}
+                                            // value={formData.lastName}
                                             placeholder="Last Name"
                                             className="form-control"
                                             validators={{
@@ -131,8 +128,8 @@ export default function About(props) {
                                             model=".phone" 
                                             id="phone" 
                                             name="phone"
-                                            onChange={handleChange}
-                                            value={formData.phone}
+                                            // onChange={handleChange}
+                                            // value={formData.phone}
                                             placeholder="Phone Number"
                                             className="form-control"
                                             validators={{
@@ -163,8 +160,8 @@ export default function About(props) {
                                             model=".email" 
                                             id="email" 
                                             name="email"
-                                            onChange={handleChange}
-                                            value={formData.email}
+                                            // onChange={handleChange}
+                                            // value={formData.email}
                                             placeholder="Email"
                                             className="form-control"
                                             validators={{
@@ -192,8 +189,8 @@ export default function About(props) {
                                                     model=".agree" 
                                                     id="agree" 
                                                     name="agree"
-                                                    checked={formData.agree}
-                                                    onChange={handleChange}
+                                                    // checked={formData.agree}
+                                                    // onChange={handleChange}
                                                     className="form-check-input"
                                                     /> {' '}
                                                     <strong>May we contact you?</strong>
@@ -205,11 +202,11 @@ export default function About(props) {
                                     <Label htmlFor="comments" md={2}>Comments</Label>
                                     <Col md={10}>
                                         <Control.textarea
-                                            model="comments"
+                                            model=".comments"
                                             id="comments"
                                             name="comments"
-                                            onChange={handleChange}
-                                            value={formData.comments}
+                                            // onChange={handleChange}
+                                            // value={formData.comments}
                                             rows="12"
                                             className="form-control"
                                         />
