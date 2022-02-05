@@ -5,6 +5,7 @@ import {
     Col,
     Row } from 'reactstrap';
 import { Control, LocalForm, Errors} from 'react-redux-form';
+
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
@@ -38,7 +39,6 @@ export default function About(props) {
         alert(`Contact Form State: ${JSON.stringify(values)}`);
     }
 
-        
         return (
             <div className={props.darkMode ? 'dark-background dark-mode-text' : ''}>
                 <div className="container pt-3">
@@ -69,8 +69,6 @@ export default function About(props) {
                                             id="firstName" 
                                             name="firstName"
                                             placeholder="First Name"
-                                            // onChange={handleChange}
-                                            // value={formData.firstName}
                                             className="form-control"
                                             validators={{
                                                 required, 
@@ -98,8 +96,6 @@ export default function About(props) {
                                             model=".lastName" 
                                             id="lastName" 
                                             name="lastName"
-                                            // onChange={handleChange}
-                                            // value={formData.lastName}
                                             placeholder="Last Name"
                                             className="form-control"
                                             validators={{
@@ -128,8 +124,6 @@ export default function About(props) {
                                             model=".phone" 
                                             id="phone" 
                                             name="phone"
-                                            // onChange={handleChange}
-                                            // value={formData.phone}
                                             placeholder="Phone Number"
                                             className="form-control"
                                             validators={{
@@ -160,8 +154,6 @@ export default function About(props) {
                                             model=".email" 
                                             id="email" 
                                             name="email"
-                                            // onChange={handleChange}
-                                            // value={formData.email}
                                             placeholder="Email"
                                             className="form-control"
                                             validators={{
@@ -189,8 +181,6 @@ export default function About(props) {
                                                     model=".agree" 
                                                     id="agree" 
                                                     name="agree"
-                                                    // checked={formData.agree}
-                                                    // onChange={handleChange}
                                                     className="form-check-input"
                                                     /> {' '}
                                                     <strong>May we contact you?</strong>
@@ -205,8 +195,6 @@ export default function About(props) {
                                             model=".comments"
                                             id="comments"
                                             name="comments"
-                                            // onChange={handleChange}
-                                            // value={formData.comments}
                                             rows="12"
                                             className="form-control"
                                         />

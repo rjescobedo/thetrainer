@@ -23,34 +23,9 @@ const isNumber = val => !isNaN(+val);
 
 export default function Workouts(props) {
 
-    const [workoutFormData, setWorkoutFormData] = React.useState({
-        exerciseName: '',
-        type: '',
-        sets: '',
-        reps: '',
-        description: '',
-        video: '',
-    });
-
-    function handleChange(event) {
-        const {name, value, type, checked} = event.target
-        setWorkoutFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [name]: type === "checkbox" ? checked : value
-            }
-        })
-    }
-
-    function handleSubmit(event) {
-        alert(`
-            Exercise Name: ${workoutFormData.exerciseName}
-            Type: ${workoutFormData.type}
-            Sets: ${workoutFormData.sets}
-            Reps: ${workoutFormData.reps}
-            Description: ${workoutFormData.description}
-            Video: ${workoutFormData.video}
-            `)
+    function handleSubmit(values) {
+        console.log(`Contact Form State: ${JSON.stringify(values)}`);
+        alert(`Contact Form State: ${JSON.stringify(values)}`);
     }
 
        
@@ -93,7 +68,7 @@ export default function Workouts(props) {
                     {props.loginData.member === 'trainer' ? <h1 className="text-center custom-font workout-heading">Custom Exercise Form</h1> : ''}
                     <div className="row">
                         <div className="col-md-12">
-                            {props.loginData.member === 'trainer' ? <LocalForm onSubmit={handleSubmit}>
+                            {props.loginData.member === 'trainer' ? <LocalForm onSubmit={values => handleSubmit(values)}>
                                 <Row className="form-group">
                                 <Label htmlFor="exerciseName" md={2} className={props.darkMode ? 'dark-mode-text' : ''}>Exercise Name</Label>
                                     <Col md={10}>
@@ -102,8 +77,6 @@ export default function Workouts(props) {
                                             id="exerciseName" 
                                             name="exerciseName"
                                             placeholder="Exercise Name"
-                                            onChange={handleChange}
-                                            value={workoutFormData.firstName}
                                             className="form-control"
                                             validators={{
                                                 required, 
@@ -132,8 +105,6 @@ export default function Workouts(props) {
                                             model=".type" 
                                             id="type" 
                                             name="type"
-                                            onChange={handleChange}
-                                            value={workoutFormData.type}
                                             className="form-control">
                                                 <option value="">-- Select Exercise Type --</option>
                                                 <option value="upperbody">Upperbody</option>
@@ -150,8 +121,6 @@ export default function Workouts(props) {
                                             id="sets" 
                                             name="sets"
                                             placeholder="# of Sets"
-                                            onChange={handleChange}
-                                            value={workoutFormData.sets}
                                             className="form-control"
                                             validators={{
                                                 required, 
@@ -182,8 +151,6 @@ export default function Workouts(props) {
                                             id="reps" 
                                             name="reps"
                                             placeholder="# of Reps"
-                                            onChange={handleChange}
-                                            value={workoutFormData.reps}
                                             className="form-control"
                                             validators={{
                                                 required, 
@@ -215,8 +182,6 @@ export default function Workouts(props) {
                                             name="description"
                                             placeholder="Describe your exercise..."
                                             rows={5}
-                                            onChange={handleChange}
-                                            value={workoutFormData.description}
                                             className="form-control"
                                             validators={{
                                                 required, 
@@ -242,8 +207,6 @@ export default function Workouts(props) {
                                             model=".video" 
                                             id="video" 
                                             name="video"
-                                            onChange={handleChange}
-                                            value={workoutFormData.video}
                                             className="form-control"
                                         />
                                     </Col>
