@@ -26,6 +26,7 @@ export default function Workouts(props) {
     function handleSubmit(values) {
         console.log(`Contact Form State: ${JSON.stringify(values)}`);
         alert(`Contact Form State: ${JSON.stringify(values)}`);
+        props.addComment(props.exerciseId, values.exerciseName, values.type, values.sets, values.reps, values.description, values.video)
     }
 
        
@@ -46,18 +47,14 @@ export default function Workouts(props) {
         );   
     });
 
-    const upperbodyExercises = props.exercises.filter(upperExercise => upperExercise.type === 'upperbody').map(filteredExercise => {
+    const exercises = props.exercises.map(exercise => {
         return (
-            <div key={filteredExercise.id}>
-                <RenderUpperbodyExercise filteredExercise={filteredExercise} />
-            </div>  
-        );   
-    });
-
-    const lowerbodyExercises = props.exercises.filter(lowerExercise => lowerExercise.type === 'lowerbody').map(filteredExercise => {
-        return (
-            <div key={filteredExercise.id}>
-                <RenderLowerbodyExercise filteredExercise={filteredExercise} />
+            <div key={exercise.id}>
+                <RenderExercises
+                    exercise={exercise}
+                    addExercise={props.addExercise}
+                    exerciseId={props.exerciseId}
+                />
             </div>  
         );   
     });
@@ -237,8 +234,7 @@ export default function Workouts(props) {
                     <div className="row">
                         <div className="col p-3 overflow-hidden">
                             <h1 className="text-center custom-font workout-heading">Exercises</h1>
-                                {upperbodyExercises}
-                                {lowerbodyExercises}
+                                {exercises}
                         </div>
                     </div>
                 </div>
@@ -247,7 +243,7 @@ export default function Workouts(props) {
     
 }
 
-function RenderUpperbodyExercise({filteredExercise}) {
+function RenderExercises({exercise, addExercise, exerciseId}) {
     const [isModalOpen, setModalOpen] = React.useState(false);
 
     function toggleExerciseModal() {
@@ -258,24 +254,25 @@ function RenderUpperbodyExercise({filteredExercise}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {filteredExercise.exercise}
+                  {exercise.exercise}
+                  {addExercise.exerciseName}
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
             </div>
 
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{filteredExercise.exercise}</h3>
+                    <h3>{exercise.exercise}</h3>
                 </ModalHeader>
                 <ModalBody>
                     <Row>
                         <Col>
-                        {filteredExercise.video ?<iframe
+                        {exercise.video ?<iframe
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                src={filteredExercise.video}
-                                alt={filteredExercise.exercise}
+                                src={exercise.video}
+                                alt={exercise.exercise}
                                 width="100%"
                                 height="300"
                             /> : <Media 
@@ -287,7 +284,7 @@ function RenderUpperbodyExercise({filteredExercise}) {
                     <Row>
                         <Col>
                             <h4 className="custom-font pt-3">Description</h4>
-                            {filteredExercise.description}
+                            {exercise.description}
                         </Col>
                     </Row>
                 </ModalBody>
@@ -295,56 +292,6 @@ function RenderUpperbodyExercise({filteredExercise}) {
         </React.Fragment>
     );
 }
-
-function RenderLowerbodyExercise({filteredExercise}) {
-    const [isModalOpen, setModalOpen] = React.useState(false);
-
-    function toggleExerciseModal() {
-        setModalOpen(prevMode => !prevMode);
-    }
-
-    return(
-        <React.Fragment>
-            <div className="list-group" onClick={toggleExerciseModal}>
-                <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {filteredExercise.exercise}
-                  <i class="fas fa-chevron-right m-1"></i>
-                </a>
-            </div>
-
-            <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
-                <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{filteredExercise.exercise}</h3>
-                </ModalHeader>
-                <ModalBody>
-                <Row>
-                        <Col>
-                        {filteredExercise.video ?<iframe
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                src={filteredExercise.video}
-                                alt={filteredExercise.exercise}
-                                width="100%"
-                                height="300"
-                            /> : <Media 
-                                    src="https://i0.wp.com/urbanpolicyplatform.org/wp-content/uploads/2020/10/video-comingsoon.jpg?ssl=1" 
-                                    alt="Video Coming Soon"
-                                    width="100%" />}
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <h5 className="custom-font">Description</h5>
-                            {filteredExercise.description}
-                        </Col>
-                    </Row>
-                </ModalBody>
-            </Modal>
-        </React.Fragment>
-    );
-}
-
 
 
 function RenderUpperWorkout({filteredUpperWorkout}) {
