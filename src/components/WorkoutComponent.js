@@ -21,7 +21,7 @@ const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
 const isNumber = val => !isNaN(+val);
 
-export default function Workouts(props) {
+export default function Workout(props) {
 
     function handleSubmit(values) {
         console.log(`Contact Form State: ${JSON.stringify(values)}`);
@@ -254,15 +254,14 @@ function RenderExercises({exercise, addExercise, exerciseId}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {exercise.exercise}
+                  {exercise.exerciseName}
                   {addExercise.exerciseName}
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
             </div>
-
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{exercise.exercise}</h3>
+                    <h3>{exercise.exerciseName}</h3>
                 </ModalHeader>
                 <ModalBody>
                     <Row>
@@ -272,7 +271,7 @@ function RenderExercises({exercise, addExercise, exerciseId}) {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                                 src={exercise.video}
-                                alt={exercise.exercise}
+                                alt={exercise.exerciseName}
                                 width="100%"
                                 height="300"
                             /> : <Media 
@@ -329,7 +328,7 @@ function RenderUpperWorkout({filteredUpperWorkout}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {filteredUpperWorkout.exercise}
+                  {filteredUpperWorkout.exerciseName}
                   <span class="text-secondary ml-auto">{filteredUpperWorkout.sets} sets / {filteredUpperWorkout.reps} reps</span>
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
@@ -337,7 +336,7 @@ function RenderUpperWorkout({filteredUpperWorkout}) {
 
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{filteredUpperWorkout.exercise}</h3>
+                    <h3>{filteredUpperWorkout.exerciseName}</h3>
                 </ModalHeader>
                 <ModalBody>
                 <Row>
@@ -438,7 +437,7 @@ function RenderLowerWorkout({filteredLowerWorkout}) {
         <React.Fragment>
             <div className="list-group" onClick={toggleExerciseModal}>
                 <a id="chestPressButton" class="custom-workout-font list-group-item d-flex justify-content-between list-group-item-action">
-                  {filteredLowerWorkout.exercise}
+                  {filteredLowerWorkout.exerciseName}
                   <span class="text-secondary ml-auto">{filteredLowerWorkout.sets} sets / {filteredLowerWorkout.reps} reps</span>
                   <i class="fas fa-chevron-right m-1"></i>
                 </a>
@@ -446,7 +445,7 @@ function RenderLowerWorkout({filteredLowerWorkout}) {
 
             <Modal isOpen={isModalOpen} toggle={toggleExerciseModal}>
                 <ModalHeader toggle={toggleExerciseModal} className="custom-font bg-light">
-                    <h3>{filteredLowerWorkout.exercise}</h3>
+                    <h3>{filteredLowerWorkout.exerciseName}</h3>
                 </ModalHeader>
                 <ModalBody>
                 <Row>

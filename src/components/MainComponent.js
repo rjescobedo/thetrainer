@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
-import Workouts from './WorkoutComponent';
+import Workout from './WorkoutComponent';
 import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -16,7 +16,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    addExercise: (exerciseId, exerciseName, type, sets, reps, description, video) => (addExercise(exerciseId, exerciseName, type, sets, reps, description, video))
+    addExercise: (exerciseId, exerciseName, type, sets, reps, description, video) => 
+    (addExercise(exerciseId, exerciseName, type, sets, reps, description, video))
 };
 
 
@@ -93,7 +94,7 @@ function Main (props) {
                         <Switch>
                             <Route path='/home' component={HomePage} />
                             <Route exact path='/workouts' render={() => 
-                                <Workouts 
+                                <Workout 
                                     exercises={props.exercises}
                                     darkMode={darkMode}
                                     loginData={loginData}

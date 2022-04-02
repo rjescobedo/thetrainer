@@ -1,7 +1,8 @@
 export const EXERCISES = [
     {
         id: 0,
-        exercise: "Squat",
+        exerciseId: 0,
+        exerciseName: "Squat",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -10,7 +11,8 @@ export const EXERCISES = [
     },
     {
         id: 1,
-        exercise: "Jump Squat",
+        exerciseId: 0,
+        exerciseName: "Jump Squat",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -19,7 +21,8 @@ export const EXERCISES = [
     },
     {
         id: 2,
-        exercise: "Lying Leg Curl",
+        exerciseId: 0,
+        exerciseName: "Lying Leg Curl",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -28,7 +31,8 @@ export const EXERCISES = [
     },
     {
         id: 3,
-        exercise: "Romanian Deadlift",
+        exerciseId: 0,
+        exerciseName: "Romanian Deadlift",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -37,7 +41,8 @@ export const EXERCISES = [
     },
     {
         id: 4,
-        exercise: "Leg Press Calf Raise",
+        exerciseId: 0,
+        exerciseName: "Leg Press Calf Raise",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -46,7 +51,8 @@ export const EXERCISES = [
     },
     {
         id: 5,
-        exercise: "Lunge",
+        exerciseId: 0,
+        exerciseName: "Lunge",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -55,7 +61,8 @@ export const EXERCISES = [
     },
     {
         id: 6,
-        exercise: "Leg Press",
+        exerciseId: 0,
+        exerciseName: "Leg Press",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -64,7 +71,8 @@ export const EXERCISES = [
     },
     {
         id: 7,
-        exercise: "One-Leg Calf Raise",
+        exerciseId: 0,
+        exerciseName: "One-Leg Calf Raise",
         type: "lowerbody",
         sets: "3",
         reps: "10",
@@ -73,7 +81,8 @@ export const EXERCISES = [
     },
     {
         id: 8,
-        exercise: "Chest Press",
+        exerciseId: 0,
+        exerciseName: "Chest Press",
         type: "upperbody",
         sets: "3",
         reps: "10",
@@ -82,7 +91,8 @@ export const EXERCISES = [
     },
     {
         id: 9,
-        exercise: "Chest Flys",
+        exerciseId: 0,
+        exerciseName: "Chest Flys",
         type: "upperbody",
         sets: "3",
         reps: "10",
@@ -91,7 +101,8 @@ export const EXERCISES = [
     },
     {
         id: 10,
-        exercise: "Tricep Press",
+        exerciseId: 0,
+        exerciseName: "Tricep Press",
         type: "upperbody",
         sets: "3",
         reps: "10",
@@ -100,7 +111,8 @@ export const EXERCISES = [
     },
     {
         id: 11,
-        exercise: "Over the Head",
+        exerciseId: 0,
+        exerciseName: "Over the Head",
         type: "upperbody",
         sets: "3",
         reps: "10",
@@ -109,7 +121,8 @@ export const EXERCISES = [
     },
     {
         id: 12,
-        exercise: "Lat Pull Down",
+        exerciseId: 0,
+        exerciseName: "Lat Pull Down",
         type: "upperbody",
         sets: "3",
         reps: "10",
@@ -118,7 +131,8 @@ export const EXERCISES = [
     },
     {
         id: 13,
-        exercise: "Cable Row",
+        exerciseId: 0,
+        exerciseName: "Cable Row",
         type: "upperbody",
         sets: "3",
         reps: "10",
@@ -127,7 +141,8 @@ export const EXERCISES = [
     },
     {
         id: 14,
-        exercise: "Single Arm Curls",
+        exerciseId: 0,
+        exerciseName: "Single Arm Curls",
         type: "upperbody",
         sets: "3",
         reps: "10",
@@ -136,7 +151,8 @@ export const EXERCISES = [
     },
     {
         id: 15,
-        exercise: "Bicep Curls",
+        exerciseId: 0,
+        exerciseName: "Bicep Curls",
         type: "upperbody",
         sets: "3",
         reps: "10",
