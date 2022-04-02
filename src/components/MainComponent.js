@@ -92,7 +92,7 @@ function Main (props) {
                 <TransitionGroup>
                     <CSSTransition key={darkMode} classNames="page" timeout={300}>
                         <Switch>
-                            <Route path='/home' component={HomePage} />
+                            <Route exact path='/' component={HomePage} />
                             <Route exact path='/workouts' render={() => 
                                 <Workout 
                                     exercises={props.exercises}
@@ -104,7 +104,7 @@ function Main (props) {
                             <Route exact path='/about' render={() =>
                                 <About darkMode={darkMode}/>
                             }/>
-                            <Redirect to='/home' />
+                            <Redirect to='/' />
                         </Switch>
                     </CSSTransition>
                 </TransitionGroup>
