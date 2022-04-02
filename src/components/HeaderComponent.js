@@ -75,9 +75,9 @@ export default function Header(props) {
                             size={55}
                         />
                         <span className="navbar-text ml-auto">
-                            {props.loginData.member === '' ? <Button color="secondary" onClick={props.toggleModal}>
+                            {props.loginData.member === '' ? <Button outline className="btn-custom" onClick={props.toggleModal}>
                                 <i className="fa fa-sign-in fa-lg" /> Login
-                            </Button> : <Button color="secondary" onClick={props.handleLogout}>
+                            </Button> : <Button outline className="btn-custom" onClick={props.handleLogout}>
                                 <i className="fa fa-sign-out fa-lg" /> Logout
                             </Button>}
                         </span>
@@ -86,7 +86,7 @@ export default function Header(props) {
                 </Navbar>
 
                 <Modal isOpen={props.isModalOpen} toggle={props.toggleModal}>
-                    <ModalHeader toggle={props.toggleModal}>Login</ModalHeader>
+                    <ModalHeader className="bg-light custom-font" toggle={props.toggleModal}>Login</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={props.handleLogin}>
                                 <FormGroup check>
@@ -142,7 +142,9 @@ export default function Header(props) {
                                         /> Remember Me
                                     </Label>
                                 </FormGroup>
-                                <Button className="my-2" type="submit" value="submit" color="secondary">Login</Button>
+                                <FormGroup className="text-center">
+                                    <Button className="btn-custom my-2" type="submit" value="submit">Login</Button>
+                                </FormGroup>
                         </Form>
                     </ModalBody>
                 </Modal>

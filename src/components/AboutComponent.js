@@ -181,9 +181,9 @@ export default function About(props) {
                                         />
                                     </Col>
                                 </Row>
-                                <Row className="form-group">
+                                <Row className="form-group text-center">
                                     <Col md={{size: 10, offset: 2}}>
-                                        <Button type="submit" color="secondary">Submit</Button>
+                                        <Button className="btn-custom" type="submit">Submit</Button>
                                     </Col>
                                 </Row>
                             </LocalForm>

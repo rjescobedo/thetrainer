@@ -210,7 +210,7 @@ export default function Workout(props) {
                                 </Row>
                                 <Row className="form-group">
                                     <Col md={{size: 10, offset: 2}}>
-                                        <Button type="submit" color="secondary">Submit Exercise</Button>
+                                        <Button className="btn-custom" type="submit">Submit Exercise</Button>
                                     </Col>
                                 </Row>
                             </LocalForm> : ''}
@@ -218,16 +218,16 @@ export default function Workout(props) {
                     </div>
                     {props.loginData.member === 'trainer' ? <hr/> : ''}
                     <h1 className="text-center custom-font workout-heading">Workouts</h1>
-                    <div className="row">
+                    <div className="row text-center">
                         <div className="col-12 col-lg-6 p-3">
                             <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Upper Body Workout</h4>
                             {upperbodyWorkout}
-                            <Button className="m-3" type="submit" color="secondary">Workout Complete</Button>
+                            <Button className="btn-custom m-3" type="submit">Workout Complete</Button>
                         </div>
                         <div className="col-12 col-lg-6 p-3">
                             <h4 className={props.darkMode ? 'dark-mode-text text-center pb-2' : 'text-center custom-font pb-2'}>Lower Body Workout</h4>
                             {lowerbodyWorkout}
-                            <Button className="m-3" type="submit" color="secondary">Workout Complete</Button>
+                            <Button className="btn-custom m-3" type="submit" color="secondary">Workout Complete</Button>
                         </div>
                     </div>
                     <hr/>
@@ -395,7 +395,9 @@ function RenderUpperWorkout({filteredUpperWorkout}) {
                                         onChange={handleChange}
                                     />
                         </FormGroup>
-                        <Button type="submit" color="secondary">Submit Exercise</Button>
+                        <FormGroup className="text-center">
+                            <Button className="btn-custom" type="submit">Submit Exercise</Button>
+                        </FormGroup>
                     </Form>
                 </ModalBody>
             </Modal>
