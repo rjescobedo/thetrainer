@@ -142,8 +142,8 @@ export default function Header(props) {
                                         /> Remember Me
                                     </Label>
                                 </FormGroup>
-                                <FormGroup className="text-center">
-                                    <Button className="btn-custom my-2" type="submit" value="submit">Login</Button>
+                                <FormGroup>
+                                    <Button className="btn-custom mt-3" type="submit" value="submit">Login</Button>
                                 </FormGroup>
                         </Form>
                     </ModalBody>

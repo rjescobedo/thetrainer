@@ -506,7 +506,9 @@ function RenderLowerWorkout({filteredLowerWorkout}) {
                                         onChange={handleChange}
                                     />
                         </FormGroup>
-                        <Button type="submit" color="secondary">Submit Exercise</Button>
+                        <FormGroup className="text-center">
+                            <Button className="btn-custom" type="submit">Submit Exercise</Button>
+                        </FormGroup>
                     </Form>
                 </ModalBody>
             </Modal>
